@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPT to Walmart PDP Flow</title>
+    <link rel="preconnect" href="https://i5.walmartimages.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="phone-page">
+      <section class="screen chat-screen is-active" id="chatScreen" aria-label="ChatGPT laptop shopping chat">
+        <header class="gpt-topbar">
+          <button class="gpt-menu" aria-label="Open menu"></button>
+          <div class="gpt-title">ChatGPT <span aria-hidden="true">⌄</span></div>
+          <div class="gpt-actions">
+            <button aria-label="New chat">□</button>
+            <button aria-label="More">...</button>
+          </div>
+        </header>
+
+        <main class="gpt-chat-body">
+          <div class="user-message">
+            I need a laptop for work. Mostly Zoom, Google Docs, Excel. I travel a lot, so battery
+            and weight matter. Budget is under $900. I don't want something bulky or gaming-focused.
+            <br /><br />
+            show walmart products
+          </div>
+
+          <p>
+            You're basically looking for a <strong>lightweight, long-battery "ultrabook-style" laptop</strong>
+            (thin + portable machines designed for everyday work) <span class="source-chip">Wikipedia</span>
+            - not power-heavy, just smooth for Zoom + Docs + Excel.
+          </p>
+          <p>
+            I pulled solid Walmart-available options under $900 that fit your use case.
+          </p>
+
+          <hr />
+
+          <h2 class="recommendation-title"><span class="award-icon" aria-hidden="true"></span> Best overall (balanced + reliable)</h2>
+          <article class="chat-product-card" data-screen="gptPdpScreen" role="button" tabindex="0" aria-label="Open ChatGPT product detail page">
+            <img
+              src="https://i5.walmartimages.com/asr/3554b07c-d374-4509-978b-c5db763f4a4c.f1104b4622c725f564c4c65e46522ead.jpeg?odnBg=F2F2F2&odnHeight=700&odnWidth=900"
+              alt="Lenovo IdeaPad laptop"
+            />
+            <h3>Lenovo IdeaPad 5 2-in-1 (16GB RAM, 512GB SSD)</h3>
+            <p>$599.00 · Walmart + others · <span class="black-star">★</span> 4.3 (131)</p>
+            <h4>Why this is best for you:</h4>
+            <ul>
+              <li>16GB RAM -> super smooth for Zoom + multitasking</li>
+              <li>Thin + portable (not bulky)</li>
+              <li>2-in-1 useful when traveling</li>
+              <li>Solid battery + performance for work apps</li>
+            </ul>
+            <p class="safe-pick">If you want one safe pick, this is it.</p>
+          </article>
+        </main>
+
+        <footer class="gpt-composer">
+          <button class="composer-add" aria-label="Add"></button>
+          <input type="text" placeholder="Ask anything" />
+        </footer>
+      </section>
+
+      <section class="screen gpt-pdp-screen" id="gptPdpScreen" aria-label="ChatGPT product detail page">
+        <header class="pdp-topbar">
+          <button class="link-button" data-screen="chatScreen" aria-label="Back to chat">‹</button>
+          <div></div>
+          <button aria-label="More">...</button>
+          <button data-screen="chatScreen" aria-label="Close">×</button>
+        </header>
+
+        <main class="gpt-pdp-body">
+          <section class="gpt-hero">
+            <button class="carousel-arrow left" aria-label="Previous image">‹</button>
+            <img
+              src="https://i5.walmartimages.com/asr/3554b07c-d374-4509-978b-c5db763f4a4c.f1104b4622c725f564c4c65e46522ead.jpeg?odnBg=FFFFFF&odnHeight=760&odnWidth=900"
+              alt="Lenovo IdeaPad 5 laptop open"
+            />
+            <button class="carousel-arrow right" aria-label="Next image">›</button>
+            <div class="carousel-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          </section>
+
+          <section class="gpt-product-heading">
+            <h1>Lenovo IdeaPad 5 2-in-1 (16GB RAM, 512GB SSD)</h1>
+            <p><span class="black-star">★</span> 4.3 (131)</p>
+          </section>
+
+          <section class="vendor-list" aria-label="Vendor options">
+            <article class="vendor-row">
+              <div class="vendor-icon walmart-icon">*</div>
+              <div>
+                <h2>Walmart - boostcore electronics</h2>
+                <p>Out of stock</p>
+              </div>
+              <strong>$569.00</strong>
+              <button data-screen="walmartScreen">Open</button>
+            </article>
+            <article class="vendor-row">
+              <div class="vendor-icon newegg-icon">N</div>
+              <div>
+                <h2>Newegg.com - DemProductSales</h2>
+                <p>In stock online, Free delivery</p>
+              </div>
+              <strong>$758.99</strong>
+              <button>Visit</button>
+            </article>
+            <article class="vendor-row">
+              <div class="vendor-icon ebay-icon">e</div>
+              <div>
+                <h2>eBay</h2>
+                <p>In stock online, Delivery between Thu - Mon $9.99</p>
+                <a href="#">Best price</a>
+              </div>
+              <strong>$538.99</strong>
+              <button>Visit</button>
+            </article>
+          </section>
+
+          <section class="gpt-knowledge">
+            <h2>What to know</h2>
+            <p>
+              The Lenovo IdeaPad 5 16IRU9 2-in-1 appeals to users who want a versatile,
+              large-screen convertible that balances affordability, performance, and portability.
+              Reviews highlight its solid everyday speed, flexible design with pen and touch
+              support, and strong value for money.
+            </p>
+          </section>
+          <section class="gpt-knowledge">
+            <h2>What people are saying</h2>
+            <p>
+              Across reviewers, the IdeaPad 5 2-in-1 earns praise for delivering good performance
+              and convertible convenience at an appealing price.
+            </p>
+          </section>
+        </main>
+
+        <button class="follow-up">↪ Follow up</button>
+      </section>
+
+      <section class="screen walmart-screen" id="walmartScreen" aria-label="Walmart product detail page">
+        <header class="mobile-header">
+          <div class="header-main">
+            <button aria-label="Back to ChatGPT PDP" class="icon-button" data-screen="gptPdpScreen">‹</button>
+            <a href="#" class="logo" aria-label="Walmart home">
+              <span>Walmart</span>
+              <b aria-hidden="true">*</b>
+            </a>
+            <span class="chatgpt-context-pill">in ChatGPT</span>
+          </div>
+        </header>
+
+        <main>
+          <section class="product-media" aria-label="Product media">
+            <img
+              id="heroImage"
+              src="https://i5.walmartimages.com/seo/Lenovo-IdeaPad-5i-16-Touchscreen-2-in-1-Laptop-Intel-Core-5-120U-16GB-512-SSD-83DU004VUS_54648de7-27d1-436e-9045-1eb6651efb94.0a7d381af4aaf8053fb031f2405c3897.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640"
+              alt="Lenovo IdeaPad 5i 2-in-1 laptop in tent mode"
+            />
+            <div class="thumb-row">
+              <button
+                class="thumb is-selected"
+                data-image="https://i5.walmartimages.com/seo/Lenovo-IdeaPad-5i-16-Touchscreen-2-in-1-Laptop-Intel-Core-5-120U-16GB-512-SSD-83DU004VUS_54648de7-27d1-436e-9045-1eb6651efb94.0a7d381af4aaf8053fb031f2405c3897.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640"
+              >
+                <img src="https://i5.walmartimages.com/seo/Lenovo-IdeaPad-5i-16-Touchscreen-2-in-1-Laptop-Intel-Core-5-120U-16GB-512-SSD-83DU004VUS_54648de7-27d1-436e-9045-1eb6651efb94.0a7d381af4aaf8053fb031f2405c3897.jpeg?odnBg=FFFFFF&odnHeight=88&odnWidth=88" alt="Laptop tent mode" />
+              </button>
+              <button
+                class="thumb"
+                data-image="https://i5.walmartimages.com/asr/3554b07c-d374-4509-978b-c5db763f4a4c.f1104b4622c725f564c4c65e46522ead.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640"
+              >
+                <img src="https://i5.walmartimages.com/asr/3554b07c-d374-4509-978b-c5db763f4a4c.f1104b4622c725f564c4c65e46522ead.jpeg?odnBg=FFFFFF&odnHeight=88&odnWidth=88" alt="Laptop open front" />
+              </button>
+              <button
+                class="thumb"
+                data-image="https://i5.walmartimages.com/seo/Lenovo-IdeaPad-5i-16-Touchscreen-2-in-1-Laptop-Intel-Core-5-120U-16GB-512-SSD-83DU004VUS_54648de7-27d1-436e-9045-1eb6651efb94.0a7d381af4aaf8053fb031f2405c3897.jpeg?odnBg=F3F7FB&odnHeight=640&odnWidth=640"
+              >
+                <img src="https://i5.walmartimages.com/seo/Lenovo-IdeaPad-5i-16-Touchscreen-2-in-1-Laptop-Intel-Core-5-120U-16GB-512-SSD-83DU004VUS_54648de7-27d1-436e-9045-1eb6651efb94.0a7d381af4aaf8053fb031f2405c3897.jpeg?odnBg=F3F7FB&odnHeight=88&odnWidth=88" alt="Laptop alternate background" />
+              </button>
+              <button class="view-all">+22</button>
+            </div>
+          </section>
+
+          <section class="product-info">
+            <a href="#" class="brand-link">Lenovo</a>
+            <h1>Lenovo IdeaPad 5i 2-in-1 16&quot; Touchscreen Laptop, Intel Core 5 120U, 16GB RAM, 512 SSD, Luna Grey</h1>
+            <div class="rating-row">
+              <span class="stars" aria-label="4.4 out of 5 stars">4.4 stars</span>
+              <a href="#">4.4</a>
+              <span>|</span>
+              <a href="#">417 ratings</a>
+            </div>
+          </section>
+
+          <section class="purchase-panel">
+            <div class="price-line">
+              <span>Current price is</span>
+              <strong>$599.00</strong>
+              <small>Price when purchased online</small>
+            </div>
+            <button class="primary-cta">Add to cart</button>
+          </section>
+
+          <section class="card fulfillment">
+            <h2>How you'll get this item:</h2>
+            <div class="fulfillment-options" role="radiogroup" aria-label="Fulfillment options">
+              <label class="fulfillment-card is-selected">
+                <input type="radio" name="fulfillment" checked />
+                <b>Shipping</b>
+                <small>Arrives between <strong>May 5 - May 7</strong></small>
+                <em>Free</em>
+              </label>
+              <label class="fulfillment-card">
+                <input type="radio" name="fulfillment" />
+                <b>Pickup</b>
+                <small>Not available</small>
+              </label>
+              <label class="fulfillment-card">
+                <input type="radio" name="fulfillment" />
+                <b>Delivery</b>
+                <small>Not available</small>
+              </label>
+            </div>
+            <p><strong>San Antonio, 78288</strong> <button class="text-link">Change</button></p>
+            <p>Arrives between <strong>May 5 - May 7</strong> <span>|</span> <button class="text-link">More options</button></p>
+          </section>
+
+          <section class="card key-features" id="keyFeaturesCard">
+            <div class="section-title">
+              <h2 id="keyFeaturesTitle">Key item features</h2>
+            </div>
+            <ul id="keyFeaturesList">
+              <li>
+                <strong>Microsoft Student Offer:</strong> Get the apps you need to study like a pro
+                then when done, switch over to game time with this bundle. Eligible college students
+                will enjoy 1 year of Microsoft 365 Premium, 1 year of Xbox Game Pass Ultimate, and
+                will be able to customize the color of their own Xbox Wireless Controller.
+              </li>
+              <li>
+                There are endless possibilities with the versatile laptop, which folds back on a
+                360-degree hinge for amazing flexibility. Knock out a business plan on laptop mode,
+                stream the latest episode on tent mode, go into stand mode for presentations, or
+                sketch your next idea on tablet.
+              </li>
+              <li>
+                Every moment on the 16&quot; WUXGA displays are a cinematic one. With narrow bezels all
+                around the 16:10 screen, the panel offers a fuller viewing experience.
+              </li>
+            </ul>
+            <button class="text-link">View all item details</button>
+          </section>
+
+          <section class="card specs" id="specsCard">
+            <div class="section-title">
+              <h2 id="specsTitle">Specs</h2>
+            </div>
+            <dl id="specsList">
+              <div><dt>Laptop type</dt><dd>2-in-1s</dd></div>
+              <div><dt>Screen size</dt><dd>16 in</dd></div>
+              <div><dt>Proc. brand</dt><dd>Intel</dd></div>
+              <div><dt>RAM memory</dt><dd>16 GB</dd></div>
+              <div><dt>Data storage</dt><dd>512 GB</dd></div>
+              <div><dt>Battery life</dt><dd>9 h</dd></div>
+            </dl>
+            <button class="text-link">View full specifications</button>
+          </section>
+
+          <section class="card gaming-alternatives" id="gamingAlternativesCard" hidden>
+            <div class="section-title">
+              <div>
+                <h2>Other gaming laptops</h2>
+                <p>Based on the gaming attributes surfaced above</p>
+              </div>
+            </div>
+            <div class="gaming-product-carousel" id="gamingProductCarousel" aria-label="Other gaming laptop options"></div>
+            <div class="compare-action-row">
+              <button class="compare-button" id="gamingCompareButton" type="button" aria-expanded="false">Compare gaming fit</button>
+            </div>
+            <div class="gaming-compare-panel" id="gamingComparePanel" hidden></div>
+          </section>
+
+          <section class="card reviews" id="reviewsCard">
+            <div class="section-title">
+              <h2 id="reviewsTitle">Reviews summary</h2>
+              <div class="review-rating" aria-label="4.4 out of 5 stars">
+                <span>★★★★☆</span>
+                <b>(4.4)</b>
+              </div>
+            </div>
+            <span class="pros-pill" id="reviewsPill">Pros</span>
+            <ul id="reviewsList">
+              <li><a href="#">Intuitive interface</a>: Easy to navigate with a responsive touchscreen.</li>
+              <li><a href="#">Consistently reliable</a>: Works without issues.</li>
+              <li><a href="#">Affordable price</a>: Offers great features and quality at this price.</li>
+            </ul>
+            <div class="review-footer">
+              <button class="text-link">View all reviews</button>
+              <span>Generated by AI <b aria-hidden="true">i</b></span>
+            </div>
+          </section>
+
+          <section class="card similar-items" id="similarItemsCard" aria-label="Similar items">
+            <div class="similar-items-header">
+              <div>
+                <h2>Similar items</h2>
+              </div>
+            </div>
+            <div class="similar-items-rail" aria-label="Similar laptops">
+              <article class="similar-item-card">
+                <div class="similar-image-well">
+                  <img
+                    src="https://i5.walmartimages.com/asr/707d42f6-8a35-4a79-a429-fa1d9b45c9c1.06d671f18d1e2d4e7532194c00c58d52.png?odnBg=FFFFFF&odnHeight=576&odnWidth=576"
+                    alt="Lenovo IdeaPad Slim 3i laptop"
+                  />
+                </div>
+                <strong class="similar-price">$419.00</strong>
+                <h3>Lenovo IdeaPad Slim 3i 15.6&quot; Laptop, Intel Core i5, 8GB, 512 SSD</h3>
+              </article>
+              <article class="similar-item-card">
+                <div class="similar-image-well">
+                  <img
+                    src="https://i5.walmartimages.com/asr/82b98986-afdd-40c3-a2d5-b0355110c65d.8403d90bb2cc57ab6d11c1b93eab4f44.jpeg?odnBg=FFFFFF&odnHeight=576&odnWidth=576"
+                    alt="HP Stream 14 inch laptop"
+                  />
+                </div>
+                <strong class="similar-price">$199.00</strong>
+                <h3>HP Stream 14 inch Windows 11 Laptop, Intel Processor, 4GB, 128GB</h3>
+              </article>
+              <article class="similar-item-card">
+                <div class="similar-image-well">
+                  <img
+                    src="https://i5.walmartimages.com/asr/42ba5206-fd6a-460f-94b8-c6113a706889.f9b783cfcfbed2a037ba145bf2f9790e.jpeg?odnBg=FFFFFF&odnHeight=576&odnWidth=576"
+                    alt="Lenovo IdeaPad 5 2-in-1 laptop"
+                  />
+                </div>
+                <strong class="similar-price">$799.97</strong>
+                <h3>Lenovo IdeaPad 5 16&quot; Touchscreen 2-in-1 Laptop, Ryzen 7, 16GB, 1TB SSD</h3>
+              </article>
+              <article class="similar-item-card">
+                <div class="similar-image-well">
+                  <img
+                    src="https://i5.walmartimages.com/asr/e3399d0c-c753-43fb-af6f-4574e16deff0.6b26caddfcdbffef1e108ff7b26a5927.jpeg?odnBg=FFFFFF&odnHeight=576&odnWidth=576"
+                    alt="Lenovo Legion 5i gaming laptop"
+                  />
+                </div>
+                <strong class="similar-price">$1,199.00</strong>
+                <h3>Lenovo Legion 5i 15.1&quot; WQXGA Laptop, Core i7, 16GB, GeForce RTX</h3>
+              </article>
+              <article class="similar-item-card">
+                <div class="similar-image-well">
+                  <img
+                    src="https://i5.walmartimages.com/asr/ec382747-3630-476f-b757-27850fd5268d.1cb2e27459fdb9f8d341c4c0b104c191.jpeg?odnBg=FFFFFF&odnHeight=576&odnWidth=576"
+                    alt="ASUS Vivobook laptop"
+                  />
+                </div>
+                <strong class="similar-price">$399.00</strong>
+                <h3>ASUS Vivobook 15.6&quot; FHD Laptop, Intel i5, 8GB RAM, 512GB SSD</h3>
+              </article>
+            </div>
+          </section>
+
+          <section class="walmart-details-footer" aria-label="View product details on Walmart">
+            <a
+              class="walmart-details-link"
+              href="https://www.walmart.com/ip/Lenovo-IdeaPad-5-16-Touchscreen-2-in-1-Laptop-Intel-Core-5-120U-16GB-512-SSD-83DU004VUS/13171758268"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View full details on Walmart
+            </a>
+            <img
+              class="walmart-details-art"
+              src="./assets/bottom-illustration.png"
+              alt="Walmart cart illustration"
+            />
+          </section>
+        </main>
+
+        <section class="chat-overlay" aria-label="Product shopping chat">
+          <form class="chat-form" id="chatForm">
+            <input id="chatInput" type="text" placeholder="Ask about this item..." aria-label="Ask about this item" />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

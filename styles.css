@@ -1,0 +1,2827 @@
+:root {
+  --blue: #0071dc;
+  --blue-dark: #004f9a;
+  --yellow: #ffc220;
+  --ink: #1f2933;
+  --muted: #697586;
+  --line: #d9e1ea;
+  --wash: #f5f7fa;
+  --good: #137333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #e8e8e8;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: #0053b8;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.phone-page {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 0 28px rgba(31, 41, 51, 0.16);
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.screen.is-active {
+  display: block;
+}
+
+.screen.flow-hidden {
+  display: none !important;
+}
+
+.gpt-topbar,
+.pdp-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 62px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.gpt-menu {
+  width: 28px;
+  height: 20px;
+  border: 0;
+  background: linear-gradient(#444 0 0) top left / 24px 2px no-repeat,
+    linear-gradient(#444 0 0) bottom left / 16px 2px no-repeat;
+}
+
+.gpt-title {
+  color: #111;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.gpt-title span {
+  color: #8b8b8b;
+  font-weight: 600;
+}
+
+.gpt-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.gpt-actions button,
+.pdp-topbar button,
+.link-button {
+  border: 0;
+  color: #111;
+  background: transparent;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.gpt-chat-body {
+  padding: 30px 14px 104px;
+  color: #111;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.user-message {
+  width: 72%;
+  margin-left: auto;
+  margin-bottom: 28px;
+  padding: 16px 18px;
+  background: #f0f0f0;
+  border-radius: 20px;
+}
+
+.source-chip {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 10px;
+  color: #656565;
+  background: #efefef;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.gpt-chat-body hr {
+  margin: 30px 0 24px;
+  border: 0;
+  border-top: 1px solid #d7d7d7;
+}
+
+.recommendation-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 18px;
+  color: #111;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.award-icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px 6px 12px 12px;
+  background: #d7a218;
+}
+
+.chat-product-card {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  color: #111;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.chat-product-card img {
+  display: block;
+  width: 100%;
+  border-radius: 24px;
+  background: #f1f1f1;
+}
+
+.chat-product-card h3 {
+  margin: 18px 0 8px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.chat-product-card p {
+  margin: 0 0 20px;
+}
+
+.chat-product-card h4 {
+  margin: 22px 0 10px;
+  font-size: 16px;
+}
+
+.chat-product-card ul {
+  padding-left: 26px;
+}
+
+.safe-pick {
+  margin-top: 18px;
+}
+
+.black-star {
+  color: #111;
+  font-weight: 900;
+}
+
+.gpt-composer {
+  position: sticky;
+  bottom: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 6px;
+  align-items: center;
+  margin: 0 14px;
+  padding: 8px 8px;
+  background: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+.gpt-composer input {
+  min-width: 0;
+  border: 0;
+  outline: none;
+  font-size: 16px;
+}
+
+.gpt-composer button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  font-size: 0;
+}
+
+.voice-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #000 !important;
+}
+
+.composer-add::before,
+.composer-add::after {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  content: "";
+}
+
+.composer-add::after {
+  transform: rotate(90deg);
+}
+
+.composer-mic::before {
+  width: 12px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  content: "";
+}
+
+.composer-mic::after {
+  position: absolute;
+  top: 25px;
+  width: 18px;
+  height: 10px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  border-radius: 0 0 999px 999px;
+  content: "";
+}
+
+.voice-button span,
+.voice-button span::before,
+.voice-button span::after {
+  display: block;
+  width: 4px;
+  background: #fff;
+  border-radius: 999px;
+  content: "";
+}
+
+.voice-button span {
+  position: relative;
+  height: 22px;
+}
+
+.voice-button span::before,
+.voice-button span::after {
+  position: absolute;
+  top: 4px;
+  height: 14px;
+}
+
+.voice-button span::before {
+  left: -8px;
+}
+
+.voice-button span::after {
+  right: -8px;
+}
+
+.gpt-pdp-screen {
+  position: relative;
+}
+
+.pdp-topbar {
+  grid-template-columns: 42px 1fr 42px 42px;
+}
+
+.gpt-pdp-body {
+  padding: 12px 14px 96px;
+  color: #111;
+}
+
+.gpt-hero {
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+
+.gpt-hero img {
+  width: 100%;
+  max-height: 410px;
+  object-fit: contain;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 46%;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #dedede;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 34px;
+}
+
+.carousel-arrow.left {
+  left: -8px;
+}
+
+.carousel-arrow.right {
+  right: -8px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  width: fit-content;
+  margin: 12px auto 28px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #aaa;
+}
+
+.carousel-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8c8c8;
+}
+
+.carousel-dots span:first-child {
+  background: #fff;
+}
+
+.gpt-product-heading h1 {
+  margin: 0 0 10px;
+  color: #111;
+  font-size: 27px;
+  line-height: 1.22;
+}
+
+.gpt-product-heading p {
+  margin: 0 0 18px;
+  font-size: 19px;
+}
+
+.vendor-list {
+  border-top: 1px solid #ededed;
+}
+
+.vendor-row {
+  display: grid;
+  grid-template-columns: 34px 1fr auto 74px;
+  gap: 10px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #ededed;
+}
+
+.vendor-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.walmart-icon {
+  color: #f5b400;
+  background: #fff8dc;
+  border: 1px solid #ececec;
+}
+
+.newegg-icon {
+  background: #0c5c8d;
+}
+
+.ebay-icon {
+  background: linear-gradient(90deg, #e53238 0 25%, #0064d2 25% 50%, #f5af02 50% 75%, #86b817 75%);
+}
+
+.vendor-row h2 {
+  margin: 0 0 4px;
+  color: #111;
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.vendor-row p,
+.vendor-row a {
+  margin: 0;
+  color: #656565;
+  font-size: 15px;
+}
+
+.vendor-row strong {
+  color: #111;
+  font-size: 19px;
+}
+
+.vendor-row button {
+  min-height: 42px;
+  border: 1px solid #d8d8d8;
+  border-radius: 999px;
+  color: #111;
+  background: #fff;
+  font-weight: 700;
+}
+
+.gpt-knowledge {
+  padding: 24px 0;
+  border-bottom: 1px solid #ededed;
+}
+
+.gpt-knowledge h2 {
+  color: #111;
+  font-size: 23px;
+}
+
+.gpt-knowledge p {
+  color: #111;
+  font-size: 20px;
+  line-height: 1.62;
+}
+
+.follow-up {
+  position: sticky;
+  bottom: 24px;
+  display: block;
+  width: 170px;
+  min-height: 54px;
+  margin: -82px 16px 24px auto;
+  border: 1px solid #d8d8d8;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.chat-overlay {
+  position: sticky;
+  bottom: 0;
+  z-index: 30;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 20px rgba(31, 41, 51, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-form input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.chat-form input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 194, 32, 0.35);
+}
+
+.chat-form button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0 18px;
+  color: #071d41;
+  background: var(--yellow);
+  font-weight: 700;
+}
+
+.mobile-header {
+  color: #fff;
+  background: var(--blue);
+}
+
+.header-main {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  gap: 8px;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 12px;
+}
+
+.icon-button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--blue-dark);
+  font-weight: 800;
+}
+
+.logo {
+  justify-self: center;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.logo b {
+  color: var(--yellow);
+  margin-left: 3px;
+}
+
+main {
+  padding-bottom: 8px;
+}
+
+.product-media {
+  position: relative;
+  padding: 12px 14px 16px;
+  border-bottom: 8px solid var(--wash);
+}
+
+.product-media > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.78;
+  object-fit: contain;
+}
+
+.thumb-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-top: 12px;
+}
+
+.thumb,
+.view-all {
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.thumb.is-selected {
+  border: 2px solid var(--blue);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.view-all {
+  color: #0053b8;
+  font-weight: 800;
+}
+
+.product-info,
+.card,
+.purchase-panel {
+  padding: 16px 14px;
+  border-bottom: 8px solid var(--wash);
+}
+
+.brand-link {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.28;
+  letter-spacing: 0;
+}
+
+.product-info h1 {
+  font-size: 16px;
+}
+
+.rating-row {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stars {
+  color: #f2a900;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.section-title span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.key-features,
+.specs,
+.reviews,
+.gaming-alternatives {
+  margin: 12px 14px;
+  padding: 18px 14px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.key-features .section-title,
+.specs .section-title,
+.reviews .section-title,
+.gaming-alternatives .section-title {
+  margin-bottom: 22px;
+}
+
+.key-features h2,
+.specs h2,
+.reviews h2,
+.gaming-alternatives h2 {
+  color: #000;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+ul {
+  margin: 0;
+  padding-left: 19px;
+}
+
+li {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.text-link {
+  border: 0;
+  padding: 0;
+  color: #2f343b;
+  background: transparent;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.specs dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 22px;
+}
+
+dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+dd {
+  margin: 3px 0 0;
+  font-weight: 800;
+}
+
+.key-features ul,
+.reviews ul {
+  color: #000;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.key-features li,
+.reviews li {
+  margin: 8px 0;
+}
+
+.key-features strong {
+  font-weight: 800;
+}
+
+.specs dl div {
+  display: grid;
+  place-items: center;
+  min-height: 92px;
+  padding: 10px 8px;
+  text-align: center;
+  background: #edf4ff;
+  border-radius: 8px;
+}
+
+.specs dt {
+  color: #2a2f37;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.specs dd {
+  color: #2a2f37;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.purchase-panel {
+  border-bottom-color: #edf4ff;
+}
+
+.price-line span,
+.price-line small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.price-line strong {
+  display: block;
+  margin: 5px 0;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.price-line {
+  padding-bottom: 16px;
+}
+
+.primary-cta {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  color: #09214a;
+  background: var(--yellow);
+  font-weight: 800;
+}
+
+.fulfillment-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0 12px;
+}
+
+.fulfillment-card {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 5px;
+  min-height: 118px;
+  margin-top: 0;
+  padding: 12px 8px;
+  border: 2px solid #babec5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.fulfillment-card.is-selected {
+  border-color: #2f343b;
+  background: var(--oai-bg-primary);
+}
+
+.fulfillment-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fulfillment-card b {
+  color: var(--oai-text-primary);
+  font-size: 15px;
+  line-height: 1.12;
+}
+
+.fulfillment-card em {
+  color: #008635;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.fulfillment-card small,
+.fulfillment p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.fulfillment p {
+  margin: 8px 0 0;
+}
+
+.reviews .section-title {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.review-rating {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.review-rating span {
+  color: #f2a900;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.review-rating b {
+  font-weight: 700;
+}
+
+.pros-pill {
+  display: inline-block;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: #145b10;
+  background: #eaf5e6;
+  font-size: 15px;
+}
+
+.reviews a {
+  color: #2f343b;
+  text-decoration: underline;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.review-footer span {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #717780;
+  font-size: 12px;
+}
+
+.review-footer b {
+  display: inline-grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #717780;
+  border-radius: 50%;
+  font-size: 10px;
+  font-style: normal;
+}
+
+@media (min-width: 760px) {
+  .phone-page {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border-radius: 18px;
+    overflow: clip;
+  }
+}
+
+/* ChatGPT guideline pass: neutral color system, SF-style type, and 16/24/32px rhythm. */
+:root {
+  --oai-bg-primary: #ffffff;
+  --oai-bg-secondary: #e8e8e8;
+  --oai-bg-tertiary: #f3f3f3;
+  --oai-text-primary: #0d0d0d;
+  --oai-text-secondary: #5d5d5d;
+  --oai-text-tertiary: #8f8f8f;
+  --oai-line: #dedede;
+  --oai-line-soft: #eeeeee;
+  --oai-blue: #0285ff;
+  --walmart-blue: #0071dc;
+  --walmart-blue-deep: #004f9a;
+  --walmart-yellow: #ffc220;
+}
+
+body {
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+.phone-page {
+  max-width: 454px;
+  background: var(--oai-bg-primary);
+  box-shadow: 0 24px 64px rgba(13, 13, 13, 0.16);
+}
+
+.screen {
+  background: var(--oai-bg-primary);
+}
+
+.gpt-topbar,
+.pdp-topbar {
+  min-height: 64px;
+  padding: 0 16px;
+  border-bottom: 1px solid transparent;
+  color: var(--oai-text-primary);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.gpt-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.gpt-actions button,
+.pdp-topbar button,
+.link-button,
+.gpt-composer button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  color: var(--oai-text-primary);
+  font-weight: 500;
+}
+
+.gpt-chat-body {
+  padding: 32px 16px 112px;
+  color: var(--oai-text-primary);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.user-message {
+  width: 70%;
+  padding: 16px 20px;
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-tertiary);
+  border-radius: 24px;
+}
+
+.source-chip {
+  color: var(--oai-text-secondary);
+  background: var(--oai-bg-tertiary);
+}
+
+.gpt-chat-body hr,
+.vendor-list,
+.vendor-row,
+.gpt-knowledge,
+.chat-overlay {
+  border-color: var(--oai-line-soft);
+}
+
+.recommendation-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.award-icon {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffcf4d, #c78911);
+}
+
+.chat-product-card {
+  padding-bottom: 24px;
+}
+
+.chat-product-card img,
+.gpt-hero {
+  border-radius: 24px;
+  background: var(--oai-bg-tertiary);
+}
+
+.chat-product-card h3 {
+  color: var(--oai-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.gpt-product-heading h1 {
+  color: var(--oai-text-primary);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.chat-product-card p,
+.chat-product-card li,
+.safe-pick,
+.gpt-product-heading p {
+  color: var(--oai-text-primary);
+}
+
+.chat-product-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.gpt-knowledge h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.gpt-composer {
+  grid-template-columns: 40px 1fr;
+  margin: 0 16px 10px;
+  padding: 8px;
+  border: 1px solid var(--oai-line);
+  border-radius: 32px;
+  box-shadow: 0 16px 48px rgba(13, 13, 13, 0.14);
+}
+
+.gpt-composer input {
+  color: var(--oai-text-primary);
+  font-size: 16px;
+}
+
+.gpt-composer input::placeholder {
+  color: var(--oai-text-tertiary);
+}
+
+.voice-button {
+  background: var(--oai-text-primary) !important;
+}
+
+#chatScreen .composer-mic,
+#chatScreen .voice-button {
+  display: none !important;
+}
+
+.gpt-pdp-body {
+  padding: 16px 16px 112px;
+}
+
+.pdp-topbar {
+  grid-template-columns: 40px 1fr 40px 40px;
+}
+
+.gpt-hero {
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+.carousel-arrow {
+  color: var(--oai-text-primary);
+  border-color: var(--oai-line);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.carousel-dots {
+  background: rgba(13, 13, 13, 0.32);
+}
+
+.vendor-row {
+  grid-template-columns: 32px 1fr auto 76px;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.vendor-row h2 {
+  color: var(--oai-text-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.vendor-row p,
+.vendor-row a {
+  color: var(--oai-text-secondary);
+}
+
+.vendor-row button {
+  color: var(--oai-text-primary);
+  border-color: var(--oai-line);
+  background: var(--oai-bg-primary);
+}
+
+.gpt-knowledge {
+  padding: 32px 0;
+}
+
+.gpt-knowledge p {
+  color: var(--oai-text-primary);
+  font-size: 19px;
+  line-height: 1.58;
+}
+
+.follow-up {
+  border-color: var(--oai-line);
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-primary);
+}
+
+.walmart-screen {
+  background: var(--oai-bg-primary);
+}
+
+.mobile-header {
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-primary);
+  border-bottom: 1px solid var(--oai-line-soft);
+}
+
+.mobile-header::before {
+  display: block;
+  height: 4px;
+  content: "";
+  background: var(--walmart-blue);
+}
+
+.header-main {
+  min-height: 60px;
+  padding: 0 16px;
+}
+
+.icon-button {
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-tertiary);
+}
+
+.logo {
+  color: var(--walmart-blue);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.logo b {
+  color: var(--walmart-yellow);
+}
+
+.chatgpt-context-pill {
+  display: none;
+}
+
+.product-media,
+.product-info,
+.purchase-panel,
+.card {
+  border-bottom-color: var(--oai-bg-tertiary);
+}
+
+.product-media {
+  padding: 16px;
+}
+
+.thumb,
+.view-all {
+  border-color: var(--oai-line);
+}
+
+.view-all,
+.brand-link,
+.rating-row a {
+  color: var(--walmart-blue);
+}
+
+.product-info,
+.purchase-panel,
+.fulfillment {
+  padding: 20px 16px;
+}
+
+h1 {
+  color: var(--oai-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.product-info h1 {
+  font-size: 16px;
+}
+
+h2 {
+  color: var(--oai-text-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rating-row,
+.price-line span,
+.price-line small,
+.fulfillment-card small,
+.fulfillment p {
+  color: var(--oai-text-secondary);
+}
+
+.price-line strong {
+  color: var(--oai-text-primary);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.pros-pill {
+  color: #008635;
+}
+
+.primary-cta {
+  color: #fff;
+  background: #0053e2;
+}
+
+.chat-form button {
+  color: var(--oai-text-primary);
+  background: var(--walmart-yellow);
+}
+
+.fulfillment-card {
+  border-color: var(--oai-line);
+}
+
+.fulfillment-card.is-selected {
+  border-color: var(--oai-text-primary);
+  background: var(--oai-bg-primary);
+}
+
+.key-features,
+.specs,
+.reviews {
+  margin: 16px;
+  padding: 20px 16px;
+  border-color: var(--oai-line);
+  border-radius: 12px;
+}
+
+.key-features h2,
+.specs h2,
+.reviews h2 {
+  color: var(--oai-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.key-features ul,
+.reviews ul {
+  color: var(--oai-text-primary);
+  font-size: 16px;
+  line-height: 1.56;
+}
+
+.specs dl {
+  gap: 8px;
+}
+
+.specs dl div {
+  background: var(--oai-bg-tertiary);
+}
+
+.specs dt,
+.specs dd,
+.reviews a,
+.text-link {
+  color: var(--oai-text-primary);
+}
+
+.pros-pill {
+  background: #eaf5e6;
+}
+
+.review-footer span,
+.review-rating,
+.review-rating b {
+  color: var(--oai-text-secondary);
+}
+
+.similar-items {
+  margin: 16px;
+  padding: 20px 0 18px 16px;
+  overflow: hidden;
+  border: 1px solid var(--oai-line);
+  border-radius: 12px;
+  background: var(--oai-bg-primary);
+}
+
+.similar-items-header {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-right: 16px;
+}
+
+.similar-items h2 {
+  margin: 0;
+  color: var(--oai-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.similar-items-header p {
+  margin: 6px 0 0;
+  color: var(--oai-text-secondary);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.similar-items-header > span {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--oai-text-tertiary);
+  font-size: 12px;
+}
+
+.similar-items-rail {
+  display: grid;
+  grid-auto-columns: minmax(150px, 48%);
+  grid-auto-flow: column;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 0 16px 4px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.similar-item-card {
+  position: relative;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.similar-image-well {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.similar-image-well img {
+  width: 94%;
+  height: 94%;
+  object-fit: contain;
+}
+
+.similar-price {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--oai-text-primary);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.similar-item-card h3 {
+  display: -webkit-box;
+  min-height: 42px;
+  margin: 0 0 8px;
+  overflow: hidden;
+  color: var(--oai-text-primary);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.38;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.walmart-details-footer {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  margin: 8px 0 0;
+  padding: 28px 0 0;
+  overflow: hidden;
+  background: var(--oai-bg-primary);
+}
+
+.walmart-details-link {
+  color: var(--oai-text-secondary);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.walmart-details-link:focus-visible {
+  border-radius: 6px;
+  outline: 2px solid var(--walmart-blue);
+  outline-offset: 4px;
+}
+
+.walmart-details-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  align-self: end;
+}
+
+.chat-overlay {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -16px 48px rgba(13, 13, 13, 0.1);
+}
+
+.chat-form {
+  gap: 10px;
+}
+
+.chat-form input {
+  min-height: 48px;
+  border-color: var(--oai-line);
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-primary);
+}
+
+.chat-form input::placeholder {
+  color: var(--oai-text-tertiary);
+}
+
+.card.is-contextual {
+  border-color: #c7dcff;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.card.is-contextual .section-title h2::after {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--walmart-blue-deep);
+  background: #eef7ff;
+  content: attr(data-context-tag);
+  font-size: 11px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.card.is-contextual .section-title h2:not([data-context-tag])::after {
+  content: "AI";
+}
+
+.gaming-review-content {
+  padding-left: 0;
+  list-style: none;
+}
+
+.gaming-review-content li {
+  margin: 0;
+}
+
+.gaming-review-summary {
+  min-height: 150px;
+  color: var(--oai-text-primary);
+  font-size: 16px;
+  line-height: 1.56;
+}
+
+.summary-line {
+  display: block;
+  opacity: 0;
+  animation: summaryLineIn 0.42s ease-out forwards;
+}
+
+.review-snippet-carousel {
+  display: grid;
+  grid-auto-columns: minmax(250px, 82%);
+  grid-auto-flow: column;
+  gap: 12px;
+  margin-top: 18px !important;
+  margin-right: -16px !important;
+  padding: 2px 16px 4px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.review-snippet-card {
+  scroll-snap-align: start;
+  min-height: 196px;
+  padding: 16px;
+  border: 1px solid var(--oai-line);
+  border-radius: 12px;
+  background: var(--oai-bg-primary);
+}
+
+.review-snippet-card .snippet-rating {
+  display: flex;
+  justify-content: flex-start;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.snippet-rating strong {
+  color: var(--oai-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.snippet-stars {
+  color: #d99a00;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.review-snippet-card h3 {
+  margin: 0 0 2px;
+  color: var(--oai-text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.review-snippet-card time {
+  color: var(--oai-text-secondary);
+  font-size: 13px;
+}
+
+.review-snippet-card p {
+  margin: 14px 0 0;
+  color: var(--oai-text-primary);
+  font-size: 15px;
+  line-height: 1.42;
+}
+
+.skeleton-summary {
+  display: grid;
+  min-height: 150px;
+  gap: 10px;
+}
+
+.skeleton-summary span,
+.skeleton-carousel article {
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ededed 0%, #f8f8f8 45%, #ededed 90%);
+  background-size: 220% 100%;
+  animation: skeletonSweep 1.05s ease-in-out infinite;
+}
+
+.skeleton-summary span {
+  height: 17px;
+}
+
+.skeleton-summary span:nth-child(1) {
+  width: 96%;
+}
+
+.skeleton-summary span:nth-child(2) {
+  width: 88%;
+}
+
+.skeleton-summary span:nth-child(3) {
+  width: 74%;
+}
+
+.skeleton-summary span:nth-child(4) {
+  width: 54%;
+}
+
+.skeleton-carousel article {
+  scroll-snap-align: start;
+  min-height: 224px;
+  border-radius: 12px;
+}
+
+.review-snippet-carousel.is-loading {
+  opacity: 0.45;
+}
+
+@keyframes skeletonSweep {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+@keyframes summaryLineIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.specs dl div.spec-positive {
+  background: rgba(0, 134, 53, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(0, 134, 53, 0.18);
+}
+
+.specs dl div.spec-neutral {
+  background: rgba(2, 133, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(2, 133, 255, 0.16);
+}
+
+.specs dl div.spec-negative {
+  background: rgba(226, 46, 42, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(226, 46, 42, 0.16);
+}
+
+.specs dl div[data-spec-key] {
+  cursor: pointer;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.specs dl div[data-spec-key]:focus-visible {
+  outline: 2px solid var(--walmart-blue);
+  outline-offset: 2px;
+}
+
+.specs dl div[data-spec-key].is-selected {
+  transform: translateY(-1px);
+}
+
+.specs dl div.spec-positive.is-selected {
+  box-shadow: inset 0 0 0 2px rgba(0, 134, 53, 0.42);
+}
+
+.specs dl div.spec-neutral.is-selected {
+  box-shadow: inset 0 0 0 2px rgba(2, 133, 255, 0.36);
+}
+
+.specs dl div.spec-negative.is-selected {
+  box-shadow: inset 0 0 0 2px rgba(226, 46, 42, 0.38);
+}
+
+.compact-product-summary {
+  display: none;
+}
+
+.walmart-screen.is-generative .compact-product-summary {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 16px 12px;
+  background: var(--oai-bg-primary);
+  border-bottom: 1px solid var(--oai-line-soft);
+}
+
+.walmart-screen.is-generative:not(.is-product-expanded) .product-media,
+.walmart-screen.is-generative:not(.is-product-expanded) .product-info,
+.walmart-screen.is-generative:not(.is-product-expanded) .purchase-panel,
+.walmart-screen.is-generative:not(.is-product-expanded) .fulfillment {
+  display: none;
+}
+
+.walmart-screen.is-generative.is-product-expanded .compact-product-summary {
+  border-bottom: 8px solid var(--oai-bg-tertiary);
+}
+
+.compact-product-summary img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border: 1px solid var(--oai-line-soft);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.compact-product-image {
+  display: grid;
+  place-items: center;
+}
+
+.compact-product-copy {
+  min-width: 0;
+}
+
+.compact-product-copy span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--oai-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.compact-product-copy h2 {
+  margin: 0;
+  overflow: hidden;
+  color: var(--oai-text-primary);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact-product-copy p {
+  margin: 4px 0 0;
+  overflow: hidden;
+  color: var(--oai-text-secondary);
+  font-size: 12px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact-product-copy strong {
+  color: var(--oai-text-primary);
+  font-weight: 700;
+}
+
+.compact-product-toggle {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--oai-line);
+  border-radius: 999px;
+  background: var(--oai-bg-primary);
+  color: var(--oai-text-primary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.compact-product-toggle:focus-visible {
+  outline: 2px solid var(--walmart-blue);
+  outline-offset: 2px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment {
+  background: linear-gradient(180deg, #f7fbff 0, #ffffff 260px);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .mobile-header {
+  padding: 14px 16px 12px;
+  border-top: 0;
+  border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .mobile-header::before {
+  display: none;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .header-main {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 50px;
+  padding: 0;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .header-main .icon-button {
+  position: static;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(13, 13, 13, 0.08);
+  border-radius: 50%;
+  background: #f7f8f8;
+  color: var(--oai-text-primary);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .logo {
+  justify-self: center;
+  gap: 7px;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .logo b {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  color: transparent;
+  font-size: 0;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .logo b::before,
+.walmart-screen.is-generative.scenario-valueAssessment .logo b::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--walmart-yellow);
+  content: "";
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .logo b::after {
+  transform: translate(-50%, -50%);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .chatgpt-context-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--oai-bg-tertiary);
+  color: var(--oai-text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment main {
+  background: linear-gradient(180deg, #f3faff 0, #ffffff 220px);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-summary {
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 14px;
+  margin: 14px 16px 18px;
+  padding: 12px;
+  border: 0;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 18px 38px rgba(13, 44, 84, 0.1),
+    0 1px 0 rgba(13, 13, 13, 0.04);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment.is-product-expanded .compact-product-summary {
+  border-bottom: 0;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-image {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f5f9fc, #eef6fb);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-summary img {
+  width: 62px;
+  height: 62px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-copy span {
+  margin-bottom: 5px;
+  color: var(--oai-text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-copy h2 {
+  color: var(--oai-text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-copy p {
+  margin-top: 6px;
+  color: var(--oai-text-secondary);
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-toggle {
+  min-width: 92px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-color: var(--oai-line);
+  color: var(--oai-text-primary);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.gaming-verdict {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 8px;
+  align-items: start;
+  padding: 16px 16px 10px;
+  background: var(--oai-bg-primary);
+}
+
+.gaming-verdict img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  margin-top: 2px;
+}
+
+.gaming-verdict.is-generating img {
+  animation: sparklePulse 1.45s ease-in-out infinite;
+}
+
+.gaming-verdict h2 {
+  margin: 0 0 4px;
+  color: var(--oai-text-primary);
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.gaming-verdict p {
+  margin: 0;
+  color: var(--oai-text-secondary);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.value-lens-meta,
+.value-verdict-chips {
+  display: none;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .gaming-verdict {
+  grid-template-columns: 42px 1fr;
+  gap: 16px;
+  margin: 16px 16px 18px;
+  padding: 26px 20px 24px;
+  border: 1px solid rgba(2, 133, 255, 0.18);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(2, 133, 255, 0.08), transparent 28%),
+    #fff;
+  box-shadow:
+    0 20px 46px rgba(13, 44, 84, 0.12),
+    0 0 0 8px rgba(2, 133, 255, 0.03);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .gaming-verdict img {
+  width: 38px;
+  height: 38px;
+  margin-top: 6px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-lens-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-lens-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(0, 83, 226, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #0053e2;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-lens-meta span:last-child {
+  color: var(--oai-text-primary);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .gaming-verdict h2 {
+  margin-bottom: 16px;
+  color: #07111f;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.02;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .gaming-verdict p {
+  color: #1f2937;
+  font-size: 16px;
+  line-height: 1.38;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-verdict-chips {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-verdict-chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-chip-positive {
+  border: 1px solid rgba(0, 134, 53, 0.26);
+  background: rgba(0, 134, 53, 0.08);
+  color: #008635;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-chip-negative {
+  border: 1px solid rgba(226, 46, 42, 0.24);
+  background: rgba(226, 46, 42, 0.07);
+  color: #c81918;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-chip-neutral {
+  border: 1px solid rgba(0, 83, 226, 0.24);
+  background: rgba(0, 83, 226, 0.07);
+  color: #0053e2;
+}
+
+.generative-process {
+  padding: 4px 16px 18px;
+  background: var(--oai-bg-primary);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.generative-process.is-complete {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.generative-status-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  color: var(--oai-text-secondary);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.generative-status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--walmart-blue);
+  box-shadow: 0 0 0 4px rgba(2, 133, 255, 0.12);
+  animation: statusDotPulse 1.2s ease-in-out infinite;
+}
+
+.generative-status-line p {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: 2px;
+  margin: 0;
+}
+
+.generative-status-line p > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 2px;
+  min-width: 18px;
+  align-items: center;
+}
+
+.typing-dots i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.3;
+  animation: typingDotBlink 1.2s ease-in-out infinite;
+}
+
+.typing-dots i:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.typing-dots i:nth-child(3) {
+  animation-delay: 320ms;
+}
+
+@keyframes typingDotBlink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+.card.is-generating {
+  min-height: 260px;
+}
+
+.skeleton-spec-tile,
+.skeleton-product-image,
+.skeleton-product-body span,
+.skeleton-chip-row span {
+  overflow: hidden;
+  background: linear-gradient(90deg, #ededed 0%, #fafafa 44%, #ededed 88%);
+  background-size: 220% 100%;
+  animation: skeletonSweep 1.05s ease-in-out infinite;
+}
+
+.specs dl div.skeleton-spec-tile {
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  min-height: 94px;
+  border-radius: 8px;
+  background-color: var(--oai-bg-tertiary);
+}
+
+.skeleton-spec-tile span {
+  display: block;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(13, 13, 13, 0.08);
+}
+
+.skeleton-spec-tile span:first-child {
+  width: 74px;
+}
+
+.skeleton-spec-tile span:last-child {
+  width: 52px;
+  margin: 0 auto;
+}
+
+.skeleton-product-card {
+  min-height: 330px;
+}
+
+.skeleton-product-image {
+  aspect-ratio: 1 / 0.82;
+  border-bottom: 1px solid var(--oai-line-soft);
+}
+
+.skeleton-product-body {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.skeleton-product-body span {
+  display: block;
+  height: 14px;
+  border-radius: 999px;
+}
+
+.skeleton-product-body span:nth-child(1) {
+  width: 86px;
+}
+
+.skeleton-product-body span:nth-child(2) {
+  width: 94%;
+}
+
+.skeleton-product-body span:nth-child(3) {
+  width: 56%;
+}
+
+.skeleton-product-body span:nth-child(4) {
+  width: 82%;
+}
+
+.skeleton-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.skeleton-chip-row span {
+  width: 104px;
+  height: 34px;
+  border-radius: 999px;
+}
+
+@keyframes sparklePulse {
+  0%,
+  100% {
+    opacity: 0.84;
+    transform: scale(0.92) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) rotate(8deg);
+  }
+}
+
+@keyframes statusDotPulse {
+  0%,
+  100% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.gaming-spec-summary {
+  margin-top: 16px;
+  padding-top: 2px;
+}
+
+.gaming-spec-summary + .text-link {
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.gaming-spec-summary h3 {
+  margin: 0 0 6px;
+  color: var(--oai-text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.gaming-spec-summary p {
+  margin: 0;
+  color: var(--oai-text-secondary);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment #gamingSpecSummary h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment #gamingSpecSummary p {
+  font-size: 16px;
+}
+
+.review-filter-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.review-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-tertiary);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.review-chip svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.review-chip.is-value {
+  color: #0053e2;
+  background: rgba(0, 83, 226, 0.08);
+  border-color: rgba(0, 83, 226, 0.18);
+}
+
+.review-chip.is-positive {
+  color: #006d2b;
+  background: rgba(0, 134, 53, 0.1);
+  border-color: rgba(0, 134, 53, 0.18);
+}
+
+.review-chip.is-neutral {
+  color: var(--oai-text-secondary);
+  background: var(--oai-bg-tertiary);
+  border-color: var(--oai-line);
+}
+
+.review-chip.is-negative {
+  color: #a8201d;
+  background: rgba(226, 46, 42, 0.1);
+  border-color: rgba(226, 46, 42, 0.16);
+}
+
+.review-chip.is-selected {
+  border-width: 2px;
+  font-weight: 700;
+}
+
+.review-chip.is-positive.is-selected {
+  border-color: rgba(0, 134, 53, 0.42);
+}
+
+.review-chip.is-value.is-selected {
+  border-color: rgba(0, 83, 226, 0.45);
+}
+
+.review-chip.is-neutral.is-selected {
+  border-color: var(--oai-text-secondary);
+}
+
+.review-chip.is-negative.is-selected {
+  border-color: rgba(226, 46, 42, 0.42);
+}
+
+.scenario-review-pill {
+  display: inline-block;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--walmart-blue-deep);
+  background: #eef7ff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews {
+  overflow: hidden;
+  margin: 16px;
+  padding: 22px 16px 18px;
+  border: 1px solid rgba(2, 133, 255, 0.18);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 18% 4%, rgba(2, 133, 255, 0.08), transparent 30%),
+    #fff;
+  box-shadow:
+    0 18px 42px rgba(13, 44, 84, 0.1),
+    0 0 0 8px rgba(2, 133, 255, 0.025);
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .section-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews h2 {
+  flex: 1 1 auto;
+  min-width: 230px;
+  color: #07111f;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews.card.is-contextual .section-title h2::after {
+  margin-left: 10px;
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 83, 226, 0.1);
+  color: #0a3f8f;
+  background: #eef7ff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-rating {
+  gap: 8px;
+  margin-left: auto;
+  color: #07111f;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-rating span {
+  color: #f2a900;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-rating b {
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-review-filter-cloud {
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-review-filter-cloud .review-chip {
+  min-height: 38px;
+  padding: 0 14px;
+  font-size: 15px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .value-review-filter-cloud .review-chip.is-selected {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .gaming-review-summary {
+  min-height: 132px;
+  color: #111827;
+  font-size: 19px;
+  line-height: 1.46;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-snippet-carousel {
+  grid-auto-columns: minmax(248px, 76%);
+  margin-top: 18px !important;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-snippet-card {
+  min-height: 178px;
+  padding: 18px;
+  border-color: #dbe3ee;
+  border-radius: 16px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .snippet-stars {
+  color: #f2a900;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .snippet-rating strong {
+  color: #5d6673;
+  font-size: 18px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-snippet-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-snippet-card time {
+  color: #667085;
+  font-size: 14px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-snippet-card p {
+  color: #172033;
+  font-size: 16px;
+  line-height: 1.42;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-footer {
+  margin-top: 18px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .reviews .review-footer .text-link {
+  color: #0053e2;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.gaming-alternatives[hidden] {
+  display: none;
+}
+
+.gaming-alternatives .section-title {
+  align-items: flex-start;
+}
+
+.gaming-alternatives .section-title div {
+  display: grid;
+  gap: 4px;
+}
+
+.compare-button {
+  min-height: 36px;
+  border: 1px solid var(--oai-line);
+  border-radius: 999px;
+  padding: 0 14px;
+  color: var(--oai-text-primary);
+  background: var(--oai-bg-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.compare-button.is-active {
+  border-color: var(--walmart-blue);
+  color: var(--walmart-blue-deep);
+  background: #eef7ff;
+}
+
+.compare-action-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.gaming-alternatives .section-title p {
+  margin: 0;
+  color: var(--oai-text-secondary);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment #gamingAlternativesCard .section-title h2 {
+  font-size: 20px;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment #gamingAlternativesCard .section-title p {
+  font-size: 16px;
+}
+
+.gaming-product-carousel {
+  display: grid;
+  grid-auto-columns: minmax(252px, 82%);
+  grid-auto-flow: column;
+  gap: 12px;
+  margin-right: -16px;
+  padding: 2px 16px 4px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.gaming-product-card {
+  scroll-snap-align: start;
+  overflow: hidden;
+  border: 1px solid var(--oai-line);
+  border-radius: 12px;
+  background: var(--oai-bg-primary);
+}
+
+.gaming-product-image-well {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 0.82;
+  overflow: hidden;
+  border-bottom: 1px solid var(--oai-line-soft);
+  background: #fff;
+}
+
+.gaming-product-image-well img {
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+}
+
+.gaming-product-content {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.gaming-product-content span {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: var(--walmart-blue-deep);
+  background: #eef7ff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.gaming-product-content h3 {
+  display: -webkit-box;
+  min-height: 42px;
+  margin: 0;
+  overflow: hidden;
+  color: var(--oai-text-primary);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.38;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.gaming-product-content strong {
+  color: var(--oai-text-primary);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.gaming-product-content p {
+  margin: 0;
+  color: var(--oai-text-secondary);
+  font-size: 13px;
+  line-height: 1.38;
+}
+
+.gaming-compare-panel[hidden] {
+  display: none;
+}
+
+.gaming-compare-panel {
+  margin-top: 14px;
+}
+
+.compare-table-scroll {
+  margin-right: -16px;
+  overflow-x: auto;
+  border: 1px solid var(--oai-line);
+  border-radius: 12px;
+  background: var(--oai-bg-primary);
+}
+
+.compare-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--oai-text-primary);
+  font-size: 13px;
+}
+
+.compare-table th,
+.compare-table td {
+  width: 154px;
+  min-width: 154px;
+  padding: 12px 10px;
+  border-right: 1px solid var(--oai-line-soft);
+  border-bottom: 1px solid var(--oai-line-soft);
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare-table thead th {
+  background: var(--oai-bg-primary);
+}
+
+.compare-table th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 104px;
+  min-width: 104px;
+  background: var(--oai-bg-primary);
+  box-shadow: 1px 0 0 var(--oai-line-soft);
+  font-weight: 650;
+}
+
+.compare-table thead th:first-child {
+  z-index: 3;
+  background: var(--oai-bg-primary);
+}
+
+.compare-table tbody th:first-child {
+  background: #edf4ff;
+  font-weight: 700;
+  text-align: center;
+}
+
+.compare-product-heading {
+  height: 230px;
+}
+
+.compare-product-heading img {
+  display: block;
+  width: 88px;
+  height: 72px;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+.viewing-label {
+  display: block;
+  min-height: 16px;
+  margin: 0 0 6px;
+  color: var(--walmart-blue-deep);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.viewing-label.is-empty {
+  visibility: hidden;
+}
+
+.current-compare-chip,
+.add-compare-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.current-compare-chip {
+  color: var(--oai-text-secondary);
+  background: var(--oai-bg-tertiary);
+}
+
+.add-compare-button {
+  border: 0;
+  color: #fff;
+  background: var(--walmart-blue);
+  box-shadow: 0 3px 8px rgba(0, 113, 220, 0.2);
+}
+
+.compare-product-heading b {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--oai-text-primary);
+  font-size: 17px;
+  line-height: 1;
+}
+
+.compare-product-title {
+  display: -webkit-box;
+  min-height: 34px;
+  overflow: hidden;
+  color: var(--oai-text-primary);
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: underline;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.compare-rating {
+  display: block;
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.compare-table thead th small {
+  display: inline-block;
+  margin-top: 7px;
+  border-radius: 999px;
+  padding: 3px 7px;
+  color: var(--walmart-blue-deep);
+  background: #eef7ff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.compare-table th:last-child,
+.compare-table td:last-child {
+  border-right: 0;
+}
+
+.compare-value {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 6px 8px;
+  line-height: 1.25;
+}
+
+.compare-value.is-good {
+  color: #006d2b;
+  background: rgba(0, 134, 53, 0.1);
+}
+
+.compare-value.is-neutral {
+  color: var(--oai-text-secondary);
+  background: var(--oai-bg-tertiary);
+}
+
+.compare-value.is-bad {
+  color: #a8201d;
+  background: rgba(226, 46, 42, 0.1);
+}
