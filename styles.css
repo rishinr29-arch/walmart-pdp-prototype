@@ -261,6 +261,55 @@ a {
   transform: scale(0.96);
 }
 
+.query-suggestion-rail {
+  display: flex;
+  gap: 8px;
+  max-height: 0;
+  margin: 0 -14px;
+  padding: 0 14px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  opacity: 0;
+  pointer-events: none;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  transition: max-height 180ms ease, margin 180ms ease, opacity 160ms ease;
+}
+
+.walmart-composer-shell.is-suggestion-visible .query-suggestion-rail {
+  max-height: 52px;
+  margin-bottom: 10px;
+  padding-block: 2px 10px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.query-suggestion-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.query-suggestion-rail button {
+  flex: 0 0 auto;
+  max-width: 320px;
+  min-height: 38px;
+  padding: 9px 14px;
+  border: 1px solid var(--oai-line);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: none;
+  color: var(--oai-text-primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
+
+.query-suggestion-rail button:active {
+  transform: scale(0.98);
+}
+
 .composer-disclaimer {
   max-width: 360px;
   margin: 12px auto 0;
@@ -1281,6 +1330,16 @@ body {
   .gpt-composer {
     grid-template-columns: 42px minmax(0, 1fr) 42px;
   }
+
+  .query-suggestion-rail {
+    margin-inline: -10px;
+    padding-inline: 10px;
+  }
+
+  .query-suggestion-rail button {
+    max-width: 280px;
+    font-size: 12px;
+  }
 }
 
 .gpt-pdp-body {
@@ -1687,6 +1746,7 @@ h2 {
   padding: 0 16px 24px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff 20%);
   box-shadow: none;
+  backdrop-filter: none;
 }
 
 .chat-form input::placeholder {

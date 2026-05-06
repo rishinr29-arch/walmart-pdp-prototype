@@ -2,6 +2,7 @@ const heroImage = document.querySelector("#heroImage");
 const chatForm = document.querySelector("#chatForm");
 const chatInput = document.querySelector("#chatInput");
 const chatSubmitButton = document.querySelector("#chatSubmitButton");
+const walmartComposerShell = document.querySelector(".walmart-composer-shell");
 const walmartScreen = document.querySelector("#walmartScreen");
 const mobileHeader = document.querySelector(".mobile-header");
 const productMedia = document.querySelector(".product-media");
@@ -19,6 +20,7 @@ const gamingProductCarousel = document.querySelector("#gamingProductCarousel");
 const gamingCompareButton = document.querySelector("#gamingCompareButton");
 const gamingComparePanel = document.querySelector("#gamingComparePanel");
 const similarItemsCard = document.querySelector("#similarItemsCard");
+const querySuggestionButtons = document.querySelectorAll("[data-suggested-query]");
 const phonePage = document.querySelector(".phone-page");
 let reviewLoadTimer;
 let reviewStreamTimer;
@@ -1127,6 +1129,48 @@ if (chatInput) {
   syncChatSubmitState();
 }
 
+updateScenarioSuggestionChips();
+
+if (walmartComposerShell && chatForm) {
+  chatForm.addEventListener("focusin", () => {
+    walmartComposerShell.classList.add("is-suggestion-visible");
+  });
+
+  chatForm.addEventListener("focusout", () => {
+    window.setTimeout(syncSuggestionRailVisibility, 0);
+  });
+
+  window.addEventListener("scroll", syncSuggestionRailVisibility, { passive: true });
+  syncSuggestionRailVisibility();
+}
+
+querySuggestionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!chatInput) return;
+
+    chatInput.value = button.dataset.suggestedQuery || button.textContent.trim();
+    chatInput.focus();
+    syncChatSubmitState();
+  });
+});
+
+function updateScenarioSuggestionChips(scenarioKey = activeScenarioKey) {
+  querySuggestionButtons.forEach((button) => {
+    button.hidden = button.dataset.scenarioChip === scenarioKey;
+  });
+}
+
+function syncSuggestionRailVisibility() {
+  if (!walmartComposerShell || !walmartScreen?.classList.contains("is-active")) {
+    return;
+  }
+
+  const isComposerFocused = walmartComposerShell.contains(document.activeElement);
+  const scrollBottom = window.scrollY + window.innerHeight;
+  const isNearPageEnd = document.documentElement.scrollHeight - scrollBottom < 120;
+  walmartComposerShell.classList.toggle("is-suggestion-visible", isComposerFocused || isNearPageEnd);
+}
+
 function syncChatSubmitState() {
   if (!chatInput || !chatSubmitButton) {
     return;
@@ -1147,6 +1191,7 @@ function showScreen(screenId) {
   });
   document.querySelector(".phone-page").scrollTo({ top: 0, behavior: "auto" });
   window.scrollTo({ top: 0, behavior: "auto" });
+  syncSuggestionRailVisibility();
 }
 
 function getScenario(key = activeScenarioKey) {
@@ -1275,6 +1320,7 @@ function startGenerativePDPTransition(scenarioKey = "gamingFit") {
   const scenario = getScenario(scenarioKey);
   const steps = scenario.steps || generativeSteps;
   activeScenarioKey = scenario.key;
+  updateScenarioSuggestionChips(scenario.key);
   clearGenerativeTransition();
   enterGenerativeTopMode();
 
@@ -1562,6 +1608,7 @@ function applyGamingPDP() {
 function applyScenarioPDP(scenarioKey = activeScenarioKey) {
   const scenario = getScenario(scenarioKey);
   activeScenarioKey = scenario.key;
+  updateScenarioSuggestionChips(scenario.key);
   clearGenerativeTransition();
   enterGenerativeTopMode();
 
