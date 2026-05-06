@@ -12,54 +12,133 @@
       <section class="screen chat-screen is-active" id="chatScreen" aria-label="ChatGPT laptop shopping chat">
         <header class="gpt-topbar">
           <button class="gpt-menu" aria-label="Open menu"></button>
-          <div class="gpt-title">ChatGPT <span aria-hidden="true">⌄</span></div>
-          <div class="gpt-actions">
-            <button aria-label="New chat">□</button>
-            <button aria-label="More">...</button>
-          </div>
+          <div class="gpt-title">ChatGPT</div>
+          <button class="gpt-kebab" aria-label="More options"></button>
         </header>
 
         <main class="gpt-chat-body">
           <div class="user-message">
             I need a laptop for work. Mostly Zoom, Google Docs, Excel. I travel a lot, so battery
-            and weight matter. Budget is under $900. I don't want something bulky or gaming-focused.
-            <br /><br />
-            show walmart products
+            and weight matter. Budget is under $900.
           </div>
 
-          <p>
-            You're basically looking for a <strong>lightweight, long-battery "ultrabook-style" laptop</strong>
-            (thin + portable machines designed for everyday work) <span class="source-chip">Wikipedia</span>
-            - not power-heavy, just smooth for Zoom + Docs + Excel.
-          </p>
-          <p>
-            I pulled solid Walmart-available options under $900 that fit your use case.
-          </p>
+          <section class="assistant-message" aria-label="ChatGPT response">
+            <div class="assistant-actions" aria-label="Response actions">
+              <button class="copy-response" type="button" aria-label="Copy response"></button>
+              <button class="edit-response" type="button" aria-label="Edit response"></button>
+            </div>
+            <div class="assistant-copy">
+              <p>
+                For your use case - <strong>Zoom, Google Docs, Excel, lots of travel</strong> - the
+                most important things are:
+              </p>
+              <ul>
+                <li><strong>Battery life</strong> (real-world all-day use)</li>
+                <li><strong>Low weight</strong></li>
+                <li><strong>Reliable webcam/mic</strong></li>
+                <li><strong>Quiet performance</strong></li>
+                <li><strong>16GB RAM</strong> if possible, so Chrome + Zoom + Sheets stay smooth for years</li>
+              </ul>
+              <p>
+                You do <em>not</em> need a heavy performance laptop or gaming machine.
+              </p>
+            </div>
+          </section>
 
           <hr />
 
-          <h2 class="recommendation-title"><span class="award-icon" aria-hidden="true"></span> Best overall (balanced + reliable)</h2>
-          <article class="chat-product-card" data-screen="gptPdpScreen" role="button" tabindex="0" aria-label="Open ChatGPT product detail page">
-            <img
-              src="https://i5.walmartimages.com/asr/3554b07c-d374-4509-978b-c5db763f4a4c.f1104b4622c725f564c4c65e46522ead.jpeg?odnBg=F2F2F2&odnHeight=700&odnWidth=900"
-              alt="Lenovo IdeaPad laptop"
-            />
-            <h3>Lenovo IdeaPad 5 2-in-1 (16GB RAM, 512GB SSD)</h3>
-            <p>$599.00 · Walmart + others · <span class="black-star">★</span> 4.3 (131)</p>
-            <h4>Why this is best for you:</h4>
-            <ul>
-              <li>16GB RAM -> super smooth for Zoom + multitasking</li>
-              <li>Thin + portable (not bulky)</li>
-              <li>2-in-1 useful when traveling</li>
-              <li>Solid battery + performance for work apps</li>
-            </ul>
-            <p class="safe-pick">If you want one safe pick, this is it.</p>
+          <h2 class="recommendation-title">Best overall</h2>
+          <article
+            class="chat-product-card"
+            aria-label="Lenovo IdeaPad recommendation"
+            data-screen="gptPdpScreen"
+            role="button"
+            tabindex="0"
+          >
+            <div class="product-image-wrap">
+              <img
+                src="./assets/lenovo-ideapad-5-clean.png"
+                alt="Lenovo IdeaPad 5 laptop"
+              />
+            </div>
+            <div class="chat-product-card-body">
+              <h3>Lenovo IdeaPad 5 2-in-1 (16GB RAM, 512GB SSD)</h3>
+              <p class="chat-product-meta">
+                <span>$421.99</span>
+                <span>Walmart - Lenovo + others</span>
+                <span><span class="black-star">✸</span> 4.7 (141)</span>
+              </p>
+              <p>
+                This is probably the sweet spot for you right now. It's light enough for airports and
+                coffee shops, has very strong battery life thanks to the newer efficient chips, and
+                16GB RAM means Zoom + dozens of Chrome tabs won't slow it down. The 14-inch size is
+                also ideal for travel - noticeably more portable than 15.6-inch laptops.
+              </p>
+              <p>
+                Tom's Guide also highlighted newer efficient laptops like the Lenovo IdeaPad Slim
+                series for exceptional battery life in this price range.
+                <span class="source-chip">Tom's Guide +1</span>
+              </p>
+            </div>
           </article>
+
+          <section class="secondary-recommendation" aria-label="Best ultra-portable budget pick">
+            <h2>Best ultra-portable budget pick</h2>
+            <div class="mini-product">
+              <img src="./assets/lenovo-slim-3-chromebook.png" alt="Lenovo IdeaPad Slim 3 Chromebook" />
+              <div>
+                <p class="mini-product-title">
+                  <a href="#">Lenovo IdeaPad Slim 3 Chromebook Laptop</a>
+                  <span>$179.00</span>
+                  <span><span class="black-star">✸</span> 4.6</span>
+                </p>
+                <p>Very light and inexpensive with excellent battery life if your workflow is mostly browser-based.</p>
+              </div>
+            </div>
+            <p>
+              This works best if almost everything you do is in Chrome: Google Docs, Sheets, Gmail,
+              Zoom, Slack, etc. Chromebooks are fantastic for travel because they're simple, light,
+              and battery-efficient &mdash; but Excel power users may prefer Windows.
+            </p>
+          </section>
+
+          <section class="secondary-recommendation" aria-label="Best battery-focused Windows option">
+            <h2>Best battery-focused Windows option</h2>
+            <div class="mini-product">
+              <img src="./assets/lenovo-slim-3-windows.png" alt="Lenovo IdeaPad Slim 3 Windows laptop" />
+              <div>
+                <p class="mini-product-title">
+                  <a href="#">Lenovo IdeaPad Slim 3 15.6 Full HD Laptop</a>
+                  <span>$329.00</span>
+                  <span><span class="black-star">✸</span> 4.6</span>
+                </p>
+                <p>
+                  Good travel productivity laptop with lightweight design and strong battery-focused
+                  everyday performance.
+                </p>
+              </div>
+            </div>
+            <p>
+              Lenovo's IdeaPad line is consistently good for office work and travel. Comfortable
+              keyboard, dependable battery, and usually very durable for frequent flyers.
+            </p>
+          </section>
         </main>
 
-        <footer class="gpt-composer">
-          <button class="composer-add" aria-label="Add"></button>
-          <input type="text" placeholder="Ask anything" />
+        <footer class="gpt-composer-shell">
+          <div class="gpt-composer" role="search">
+            <button class="composer-icon-button" aria-label="Add">
+              <img src="./assets/icon/plus-lg, 18px, add.svg" alt="" aria-hidden="true" />
+            </button>
+            <input type="text" placeholder="Ask anything" />
+            <button class="composer-icon-button" aria-label="Dictate">
+              <img src="./assets/icon/mic-lg, dictate.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+          <p class="composer-disclaimer">
+            ChatGPT can make mistakes. Check important info.
+            <a href="#">See Cookie Preferences.</a>
+          </p>
         </footer>
       </section>
 
@@ -75,7 +154,7 @@
           <section class="gpt-hero">
             <button class="carousel-arrow left" aria-label="Previous image">‹</button>
             <img
-              src="https://i5.walmartimages.com/asr/3554b07c-d374-4509-978b-c5db763f4a4c.f1104b4622c725f564c4c65e46522ead.jpeg?odnBg=FFFFFF&odnHeight=760&odnWidth=900"
+              src="./assets/lenovo-ideapad-5-clean.png"
               alt="Lenovo IdeaPad 5 laptop open"
             />
             <button class="carousel-arrow right" aria-label="Next image">›</button>
@@ -89,10 +168,12 @@
 
           <section class="vendor-list" aria-label="Vendor options">
             <article class="vendor-row">
-              <div class="vendor-icon walmart-icon">*</div>
+              <div class="vendor-icon walmart-icon">
+                <img src="./assets/walmart-spark.svg" alt="" aria-hidden="true" />
+              </div>
               <div>
-                <h2>Walmart - boostcore electronics</h2>
-                <p>Out of stock</p>
+                <h2>Walmart</h2>
+                <p class="stock-status">In stock</p>
               </div>
               <strong>$569.00</strong>
               <button data-screen="walmartScreen">Open</button>
@@ -376,10 +457,15 @@
           </section>
         </main>
 
-        <section class="chat-overlay" aria-label="Product shopping chat">
-          <form class="chat-form" id="chatForm">
-            <input id="chatInput" type="text" placeholder="Ask about this item..." aria-label="Ask about this item" />
-            <button type="submit">Send</button>
+        <section class="chat-overlay gpt-composer-shell walmart-composer-shell" aria-label="Product shopping chat">
+          <form class="gpt-composer" id="chatForm" role="search">
+            <button class="composer-icon-button" type="button" aria-label="Add">
+              <img src="./assets/icon/plus-lg, 18px, add.svg" alt="" aria-hidden="true" />
+            </button>
+            <input id="chatInput" type="text" placeholder="Ask anything" aria-label="Ask anything" />
+            <button class="composer-icon-button chat-submit-button" id="chatSubmitButton" type="submit" aria-label="Dictate">
+              <img src="./assets/icon/mic-lg, dictate.svg" alt="" aria-hidden="true" />
+            </button>
           </form>
         </section>
       </section>

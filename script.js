@@ -1,7 +1,9 @@
 const heroImage = document.querySelector("#heroImage");
 const chatForm = document.querySelector("#chatForm");
 const chatInput = document.querySelector("#chatInput");
+const chatSubmitButton = document.querySelector("#chatSubmitButton");
 const walmartScreen = document.querySelector("#walmartScreen");
+const mobileHeader = document.querySelector(".mobile-header");
 const productMedia = document.querySelector(".product-media");
 const keyFeaturesCard = document.querySelector("#keyFeaturesCard");
 const specsTitle = document.querySelector("#specsTitle");
@@ -17,11 +19,21 @@ const gamingProductCarousel = document.querySelector("#gamingProductCarousel");
 const gamingCompareButton = document.querySelector("#gamingCompareButton");
 const gamingComparePanel = document.querySelector("#gamingComparePanel");
 const similarItemsCard = document.querySelector("#similarItemsCard");
+const phonePage = document.querySelector(".phone-page");
 let reviewLoadTimer;
 let reviewStreamTimer;
 let generationTimers = [];
-let activeScenarioKey = "gamingFit";
+let activeScenarioKey = "smartDefaultPDP";
 let activeReviewFilter = "all";
+
+const smartDefaultSteps = [
+  "Reading product content",
+  "Checking specs, price, fulfillment, and reviews",
+  "Prioritizing the shopper's likely decision points",
+  "Finding strengths, caveats, and comparable options",
+  "Summarizing review themes",
+  "Building the smart default PDP",
+];
 
 const generativeSteps = [
   "Checking gaming fit",
@@ -183,6 +195,245 @@ const gamingSpecSummaries = {
 };
 
 const scenarioContent = {
+  smartDefaultPDP: {
+    key: "smartDefaultPDP",
+    tag: "Smart PDP",
+    verdictTitle: "Work + Travel Fit",
+    verdictSummary:
+      "A strong fit for Zoom, Google Docs, Excel, and frequent travel under $900. The main things to weigh are battery expectations, 16-inch size, and whether you want the lightest possible carry.",
+    chatPlaceholder: "Ask about work apps, battery, weight, travel, or value.",
+    steps: smartDefaultSteps,
+    specsTitle: "Work + travel specs",
+    specs: [
+      { key: "work", label: "Work apps", value: "Strong", tone: "positive" },
+      { key: "battery", label: "Battery", value: "9 h", tone: "positive" },
+      { key: "weight", label: "Travel weight", value: "Moderate", tone: "neutral" },
+      { key: "ram", label: "Multitasking", value: "16 GB", tone: "positive" },
+      { key: "budget", label: "Budget", value: "Under $900", tone: "positive" },
+      { key: "screen", label: "Screen size", value: "16 in", tone: "neutral" },
+    ],
+    specSummaries: {
+      work: {
+        title: "Built for work apps",
+        text:
+          "This is the strongest part of the match: Zoom, Google Docs, Excel, browser tabs, email, and office multitasking are exactly the kind of everyday workload 16GB RAM and a current Intel Core chip should handle well.",
+      },
+      battery: {
+        title: "Good battery signal",
+        text:
+          "The listed 9-hour battery is a useful signal for travel days, meetings, and coffee-shop work. Video calls and high brightness will shorten that, so it is better read as good everyday battery, not guaranteed all-day heavy Zoom use.",
+      },
+      weight: {
+        title: "Portable, not ultralight",
+        text:
+          "The 2-in-1 design helps in airports, hotels, and tight desk setups, but the 16-inch screen means this is not the lightest travel laptop. It is a better pick if screen space matters as much as weight.",
+      },
+      ram: {
+        title: "Zoom plus tabs",
+        text:
+          "16GB RAM is the right call for this shopper because Zoom, Chrome, Docs, Sheets, Slack, and email can stay open together without feeling like a bare-minimum setup.",
+      },
+      budget: {
+        title: "Comfortably under budget",
+        text:
+          "At $599, this stays well below the $900 ceiling and leaves budget for a sleeve, mouse, USB-C hub, or extended coverage if those matter for travel.",
+      },
+      screen: {
+        title: "Screen-space tradeoff",
+        text:
+          "The 16-inch display is helpful for spreadsheets and split-screen work. The tradeoff is bag space and weight compared with a 13- or 14-inch ultraportable.",
+      },
+    },
+    defaultSpecKey: "work",
+    alternativesTitle: "Other work + travel laptops",
+    alternativesSubtitle: "Relevant options if weight, battery, or price matters more",
+    products: [
+      {
+        image: "./assets/acer-aspire-14-ai.png",
+        title: 'Acer Aspire 14 AI Laptop, 14" Display, 16GB RAM, 512GB SSD',
+        price: "$649.00",
+        badge: "Lighter carry",
+        highlight:
+          "A better direction if travel weight matters more than having a large 16-inch screen for spreadsheets.",
+      },
+      {
+        image: "./assets/lenovo-slim-3-windows.png",
+        title: 'Lenovo IdeaPad Slim 3 15.6" Windows Laptop, 8GB RAM, 512GB SSD',
+        price: "$329.00",
+        badge: "Lower price",
+        highlight:
+          "A budget-focused Windows option for docs, email, and lighter Excel work if 16GB memory is not required.",
+      },
+      {
+        image: "./assets/lenovo-slim-3-chromebook.png",
+        title: "Lenovo IdeaPad Slim 3 Chromebook Laptop",
+        price: "$179.00",
+        badge: "Browser-first",
+        highlight:
+          "The simplest travel pick if the workday is mostly Google Docs, Sheets, Gmail, browser tabs, and web meetings.",
+      },
+    ],
+    reviewMode: "scenarioFilters",
+    reviewFilterChips: [
+      { key: "work", label: "Work apps", tone: "positive" },
+      { key: "travel", label: "Travel + battery", tone: "neutral" },
+      { key: "value", label: "Budget value", tone: "positive" },
+    ],
+    reviewTitle: "Customer review fit",
+    reviews: {
+      summary:
+        "The review read supports this as a work-first laptop: buyers call out smooth daily performance, useful memory, and strong value. Travel feedback is positive when people want screen space, but less ideal if they want the lightest bag.",
+      snippets: [
+        {
+          stars: "★★★★★",
+          rating: "5.0",
+          name: "Nina P.",
+          date: "Apr 4, 2026",
+          datetime: "2026-04-04",
+          text: "Great value for work and travel. I can keep Docs, Sheets, email, and video calls open without it slowing down.",
+        },
+        {
+          stars: "★★★★☆",
+          rating: "4.0",
+          name: "Marco R.",
+          date: "Mar 18, 2026",
+          datetime: "2026-03-18",
+          text: "The big screen is excellent for spreadsheets on the road. It is portable enough, but not what I would call ultralight.",
+        },
+        {
+          stars: "★★★★★",
+          rating: "5.0",
+          name: "Alyssa T.",
+          date: "Feb 22, 2026",
+          datetime: "2026-02-22",
+          text: "Battery has been good for meetings and writing sessions. I still bring the charger on long travel days.",
+        },
+      ],
+    },
+    reviewFilters: {
+      all: {
+        summary:
+          "The review read supports this as a work-first laptop: buyers call out smooth daily performance, useful memory, and strong value. Travel feedback is positive when people want screen space, but less ideal if they want the lightest bag.",
+        snippets: [
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Nina P.",
+            date: "Apr 4, 2026",
+            datetime: "2026-04-04",
+            text: "Great value for work and travel. I can keep Docs, Sheets, email, and video calls open without it slowing down.",
+          },
+          {
+            stars: "★★★★☆",
+            rating: "4.0",
+            name: "Marco R.",
+            date: "Mar 18, 2026",
+            datetime: "2026-03-18",
+            text: "The big screen is excellent for spreadsheets on the road. It is portable enough, but not what I would call ultralight.",
+          },
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Alyssa T.",
+            date: "Feb 22, 2026",
+            datetime: "2026-02-22",
+            text: "Battery has been good for meetings and writing sessions. I still bring the charger on long travel days.",
+          },
+        ],
+      },
+      work: {
+        summary:
+          "Work-app reviews are the strongest match. Buyers mention smooth multitasking, comfortable spreadsheet space, and enough memory for the usual mix of calls, docs, browser tabs, and email.",
+        snippets: [
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Renee C.",
+            date: "Apr 12, 2026",
+            datetime: "2026-04-12",
+            text: "I bought it for remote work. Zoom, Docs, Gmail, and a lot of Chrome tabs run smoothly together.",
+          },
+          {
+            stars: "★★★★☆",
+            rating: "4.0",
+            name: "Daniel K.",
+            date: "Mar 26, 2026",
+            datetime: "2026-03-26",
+            text: "Excel is much nicer on the bigger display. It gives me enough room for sheets and a browser side by side.",
+          },
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Maya S.",
+            date: "Jan 31, 2026",
+            datetime: "2026-01-31",
+            text: "The 16GB memory was the reason I picked it. It feels ready for a normal workday without constant tab closing.",
+          },
+        ],
+      },
+      travel: {
+        summary:
+          "Travel reviews are more nuanced: customers like the battery, flexible hinge, and roomy screen, while some note that the 16-inch body is bigger than an ultraportable.",
+        snippets: [
+          {
+            stars: "★★★★☆",
+            rating: "4.0",
+            name: "Alyssa T.",
+            date: "Feb 22, 2026",
+            datetime: "2026-02-22",
+            text: "Battery has been good for meetings and writing sessions. I still bring the charger on long travel days.",
+          },
+          {
+            stars: "★★★★☆",
+            rating: "4.0",
+            name: "Marco R.",
+            date: "Mar 18, 2026",
+            datetime: "2026-03-18",
+            text: "The big screen is excellent for spreadsheets on the road. It is portable enough, but not what I would call ultralight.",
+          },
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Priya S.",
+            date: "Dec 19, 2025",
+            datetime: "2025-12-19",
+            text: "Tent mode is useful in hotels and on small tables. It feels flexible when I do not have a full desk.",
+          },
+        ],
+      },
+      value: {
+        summary:
+          "Value reviews line up well with the under-$900 requirement. People like that the price leaves room in the budget while still getting 16GB RAM, 512GB storage, and a touchscreen.",
+        snippets: [
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Nina P.",
+            date: "Apr 4, 2026",
+            datetime: "2026-04-04",
+            text: "For the price, memory and touchscreen make it feel like a strong buy for my work setup.",
+          },
+          {
+            stars: "★★★★☆",
+            rating: "4.0",
+            name: "Evan L.",
+            date: "Mar 5, 2026",
+            datetime: "2026-03-05",
+            text: "It came in way under what I planned to spend, but still feels like a proper work laptop.",
+          },
+          {
+            stars: "★★★★★",
+            rating: "5.0",
+            name: "Jordan M.",
+            date: "Jan 27, 2026",
+            datetime: "2026-01-27",
+            text: "I had a $900 budget and liked that this left money for a sleeve, mouse, and USB-C adapter.",
+          },
+        ],
+      },
+    },
+    showCompare: false,
+  },
   gamingFit: {
     key: "gamingFit",
     tag: "Gaming",
@@ -867,7 +1118,27 @@ if (chatForm) {
     chatInput.blur();
     chatInput.placeholder = answerQuestion(question);
     chatInput.value = "";
+    syncChatSubmitState();
   });
+}
+
+if (chatInput) {
+  chatInput.addEventListener("input", syncChatSubmitState);
+  syncChatSubmitState();
+}
+
+function syncChatSubmitState() {
+  if (!chatInput || !chatSubmitButton) {
+    return;
+  }
+
+  const hasText = chatInput.value.trim().length > 0;
+  chatSubmitButton.classList.toggle("is-send-state", hasText);
+  chatSubmitButton.setAttribute("aria-label", hasText ? "Send message" : "Dictate");
+  const icon = chatSubmitButton.querySelector("img");
+  if (icon) {
+    icon.src = hasText ? "./assets/icon/icon/arrow-up-sm.svg" : "./assets/icon/mic-lg, dictate.svg";
+  }
 }
 
 function showScreen(screenId) {
@@ -884,6 +1155,7 @@ function getScenario(key = activeScenarioKey) {
 
 function getCompareButtonLabel(scenario = getScenario()) {
   const labels = {
+    smartDefaultPDP: "Compare smart picks",
     betterGaming: "Compare under $900",
     collegeFit: "Compare student fit",
     valueAssessment: "Compare value",
@@ -934,6 +1206,21 @@ function detectGenerativeScenario(normalized) {
 
   if (normalized.includes("should i buy") || normalized.includes("buy this one") || normalized.includes("buy it")) {
     return "decisionSummary";
+  }
+
+  if (
+    normalized.includes("smart default") ||
+    normalized.includes("smart pdp") ||
+    normalized.includes("default pdp") ||
+    normalized.includes("work") ||
+    normalized.includes("zoom") ||
+    normalized.includes("google docs") ||
+    normalized.includes("excel") ||
+    normalized.includes("travel") ||
+    normalized.includes("battery") ||
+    normalized.includes("weight")
+  ) {
+    return "smartDefaultPDP";
   }
 
   if (normalized.includes("gaming") || normalized.includes("game")) {
@@ -1026,6 +1313,7 @@ function startGenerativePDPTransition(scenarioKey = "gamingFit") {
   } else {
     compactProductSummary.insertAdjacentElement("afterend", gamingVerdict);
   }
+  setProductDetailsExpanded(true);
   gamingVerdict.insertAdjacentElement("afterend", generationProcess);
   generationProcess.insertAdjacentElement("afterend", specsCard);
   specsCard.insertAdjacentElement("afterend", gamingAlternativesCard);
@@ -1035,8 +1323,10 @@ function startGenerativePDPTransition(scenarioKey = "gamingFit") {
   renderGenerativeSkeletons(scenario);
 
   const anchorToGeneration = () => {
-    const anchorTop = Math.max(compactProductSummary.offsetTop - 8, 0);
+    const stickyHeaderOffset = (mobileHeader?.offsetHeight || 64) + 18;
+    const anchorTop = Math.max(gamingVerdict.offsetTop - stickyHeaderOffset, 0);
     window.scrollTo({ top: anchorTop, behavior: "smooth" });
+    phonePage?.scrollTo({ top: anchorTop, behavior: "smooth" });
   };
 
   requestAnimationFrame(anchorToGeneration);
@@ -1090,7 +1380,6 @@ function enterGenerativeTopMode() {
 
   walmartScreen.classList.add("is-generative");
   syncScenarioClass(activeScenarioKey);
-  setProductDetailsExpanded(false);
 }
 
 function syncScenarioClass(scenarioKey = activeScenarioKey) {
@@ -1098,10 +1387,14 @@ function syncScenarioClass(scenarioKey = activeScenarioKey) {
     return;
   }
 
+  const scenario = getScenario(scenarioKey);
   Array.from(walmartScreen.classList)
     .filter((className) => className.startsWith("scenario-"))
     .forEach((className) => walmartScreen.classList.remove(className));
-  walmartScreen.classList.add(`scenario-${getScenario(scenarioKey).key}`);
+  walmartScreen.classList.add(`scenario-${scenario.key}`);
+  if (scenario.visualStyle === "valueLens") {
+    walmartScreen.classList.add("scenario-valueAssessment");
+  }
 }
 
 function ensureCompactProductSummary() {
@@ -1123,14 +1416,17 @@ function ensureCompactProductSummary() {
         <span>Viewing this item</span>
         <h2>Lenovo IdeaPad 5i 2-in-1 16&quot;</h2>
         <p>$599.00 · arrives May 5-7 · Free</p>
+        <button class="compact-product-details-link" id="compactProductDetailsLink" type="button">
+          View details <span aria-hidden="true">⌄</span>
+        </button>
       </div>
-      <button class="compact-product-toggle" id="compactProductToggle" type="button" aria-expanded="false">
-        Details
+      <button class="compact-product-cta" id="compactProductAddToCart" type="button">
+        Add to cart
       </button>
     `;
 
-    compactSummary.querySelector("#compactProductToggle").addEventListener("click", () => {
-      setProductDetailsExpanded(!walmartScreen.classList.contains("is-product-expanded"));
+    compactSummary.querySelector("#compactProductDetailsLink").addEventListener("click", () => {
+      expandProductDetailsFromCompact();
     });
   }
 
@@ -1142,18 +1438,29 @@ function setProductDetailsExpanded(isExpanded) {
     return;
   }
 
-  walmartScreen.classList.toggle("is-product-expanded", isExpanded);
-  const toggle = document.querySelector("#compactProductToggle");
-  const compactSummary = document.querySelector("#compactProductSummary");
-
-  if (toggle) {
-    toggle.textContent = isExpanded ? "Hide" : "Details";
-    toggle.setAttribute("aria-expanded", String(isExpanded));
+  const wasExpanded = walmartScreen.classList.contains("is-product-expanded");
+  if (wasExpanded === isExpanded) {
+    return;
   }
+
+  walmartScreen.classList.toggle("is-product-expanded", isExpanded);
+  const compactSummary = document.querySelector("#compactProductSummary");
+  const detailsLink = document.querySelector("#compactProductDetailsLink");
 
   if (compactSummary) {
     compactSummary.classList.toggle("is-expanded", isExpanded);
   }
+  if (detailsLink) {
+    detailsLink.setAttribute("aria-expanded", String(isExpanded));
+  }
+}
+
+function expandProductDetailsFromCompact() {
+  setProductDetailsExpanded(true);
+
+  const targetTop = Math.max((productMedia?.offsetTop || 0) - 8, 0);
+  window.scrollTo({ top: targetTop, behavior: "smooth" });
+  phonePage?.scrollTo({ top: targetTop, behavior: "smooth" });
 }
 
 function ensureGenerationProcess() {
@@ -1283,14 +1590,14 @@ function applyScenarioPDP(scenarioKey = activeScenarioKey) {
   } else {
     compactProductSummary.insertAdjacentElement("afterend", gamingVerdict);
   }
+  setProductDetailsExpanded(true);
 
   orderScenarioSections(scenario, gamingVerdict);
   gamingVerdict.classList.remove("is-generating");
-  gamingVerdict.querySelector("h2").textContent = scenario.verdictTitle;
-  gamingVerdict.querySelector("p").textContent = scenario.verdictSummary;
+  renderScenarioVerdict(gamingVerdict, scenario);
 
   if (chatInput) {
-    chatInput.placeholder = scenario.chatPlaceholder || "Ask about this item...";
+    chatInput.placeholder = scenario.chatPlaceholder || "Ask anything";
   }
 
   setContextTags(scenario);
@@ -1332,6 +1639,30 @@ function orderScenarioSections(scenario, verdict) {
   verdict.insertAdjacentElement("afterend", specsCard);
   specsCard.insertAdjacentElement("afterend", gamingAlternativesCard);
   gamingAlternativesCard.insertAdjacentElement("afterend", reviewsCard);
+}
+
+function renderScenarioVerdict(verdict, scenario) {
+  verdict.querySelector("h2").textContent = scenario.verdictTitle;
+  verdict.querySelector("p").textContent = scenario.verdictSummary;
+
+  const meta = scenario.lensMeta || ["AI Value Lens", "Generated from specs + reviews"];
+  const metaItems = verdict.querySelectorAll(".value-lens-meta span");
+  metaItems.forEach((item, index) => {
+    item.textContent = meta[index] || "";
+    item.hidden = !meta[index];
+  });
+
+  const chips = scenario.verdictChips || [
+    { label: "School: strong", tone: "positive" },
+    { label: "Gaming: limited", tone: "negative" },
+    { label: "Touch: yes", tone: "neutral" },
+  ];
+  const chipContainer = verdict.querySelector(".value-verdict-chips");
+  if (chipContainer) {
+    chipContainer.innerHTML = chips
+      .map((chip) => `<span class="value-chip-${chip.tone || "neutral"}">${chip.label}</span>`)
+      .join("");
+  }
 }
 
 function setContextTags(scenario) {
@@ -1461,6 +1792,28 @@ function renderScenarioReviews(scenario = getScenario()) {
     return;
   }
 
+  if (scenario.reviewMode === "scenarioFilters") {
+    const chips = scenario.reviewFilterChips || [];
+    if (currentReviewsPill) {
+      currentReviewsPill.outerHTML = `
+      <div class="review-filter-cloud" id="reviewsPill" aria-label="Review filters">
+        ${chips
+          .map(
+            (chip) => `
+              <button class="review-chip is-${chip.tone || "neutral"}" data-scenario-review-filter="${chip.key}" aria-pressed="false">
+                ${chip.label}
+              </button>
+            `,
+          )
+          .join("")}
+      </div>
+    `;
+    }
+    setScenarioReviewFilter("all", scenario);
+    bindScenarioReviewFilters(scenario);
+    return;
+  }
+
   if (currentReviewsPill) {
     currentReviewsPill.outerHTML = `
     <span class="scenario-review-pill" id="reviewsPill">${scenario.tag || "AI"}</span>
@@ -1555,6 +1908,8 @@ function ensureGamingVerdict() {
 
   return verdict;
 }
+
+applyScenarioPDP("smartDefaultPDP");
 
 function ensureGamingSpecSummary() {
   if (!document.querySelector("#gamingSpecSummary")) {

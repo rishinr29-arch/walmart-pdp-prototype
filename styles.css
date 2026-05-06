@@ -81,6 +81,7 @@ a {
 }
 
 .gpt-menu {
+  position: relative;
   width: 28px;
   height: 20px;
   border: 0;
@@ -88,23 +89,23 @@ a {
     linear-gradient(#444 0 0) bottom left / 16px 2px no-repeat;
 }
 
+.gpt-menu::after {
+  position: absolute;
+  top: -6px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: "";
+  background: #0285ff;
+}
+
 .gpt-title {
   color: #111;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.gpt-title span {
-  color: #8b8b8b;
-  font-weight: 600;
-}
-
-.gpt-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.gpt-actions button,
 .pdp-topbar button,
 .link-button {
   border: 0;
@@ -156,14 +157,6 @@ a {
   line-height: 1.2;
 }
 
-.award-icon {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px 6px 12px 12px;
-  background: #d7a218;
-}
-
 .chat-product-card {
   width: 100%;
   border: 0;
@@ -206,22 +199,27 @@ a {
 
 .black-star {
   color: #111;
-  font-weight: 900;
+  font-weight: 700;
 }
 
-.gpt-composer {
+.gpt-composer-shell {
   position: sticky;
   bottom: 0;
   z-index: 30;
+  padding: 0 14px 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff 20%);
+}
+
+.gpt-composer {
   display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 6px;
+  grid-template-columns: 46px minmax(0, 1fr) 46px;
+  gap: 0;
   align-items: center;
-  margin: 0 14px;
-  padding: 8px 8px;
+  min-height: 58px;
+  padding: 8px;
   background: #fff;
   border: 1px solid #d4d4d4;
-  border-radius: 28px;
+  border-radius: 999px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
 }
 
@@ -233,83 +231,49 @@ a {
 }
 
 .gpt-composer button {
-  position: relative;
   display: grid;
   place-items: center;
+  width: 46px;
+  height: 46px;
   border: 0;
-  background: transparent;
-  font-size: 0;
-}
-
-.voice-button {
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
-  background: #000 !important;
+  background: #f7f7f7;
 }
 
-.composer-add::before,
-.composer-add::after {
-  position: absolute;
-  width: 22px;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
-  content: "";
+.gpt-composer button img {
+  width: 24px;
+  height: 24px;
 }
 
-.composer-add::after {
-  transform: rotate(90deg);
+.walmart-composer-shell .chat-submit-button {
+  transition: background 160ms ease, transform 160ms ease;
 }
 
-.composer-mic::before {
-  width: 12px;
-  height: 18px;
-  border: 2px solid currentColor;
-  border-radius: 999px;
-  content: "";
+.walmart-composer-shell .chat-submit-button.is-send-state {
+  background: var(--oai-text-primary);
 }
 
-.composer-mic::after {
-  position: absolute;
-  top: 25px;
-  width: 18px;
-  height: 10px;
-  border-bottom: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  border-radius: 0 0 999px 999px;
-  content: "";
+.walmart-composer-shell .chat-submit-button.is-send-state img {
+  filter: brightness(0) invert(1);
 }
 
-.voice-button span,
-.voice-button span::before,
-.voice-button span::after {
-  display: block;
-  width: 4px;
-  background: #fff;
-  border-radius: 999px;
-  content: "";
+.walmart-composer-shell .chat-submit-button.is-send-state:active {
+  transform: scale(0.96);
 }
 
-.voice-button span {
-  position: relative;
-  height: 22px;
+.composer-disclaimer {
+  max-width: 360px;
+  margin: 12px auto 0;
+  color: var(--oai-text-secondary);
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: center;
 }
 
-.voice-button span::before,
-.voice-button span::after {
-  position: absolute;
-  top: 4px;
-  height: 14px;
-}
-
-.voice-button span::before {
-  left: -8px;
-}
-
-.voice-button span::after {
-  right: -8px;
+.composer-disclaimer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .gpt-pdp-screen {
@@ -411,7 +375,7 @@ a {
   border-radius: 50%;
   color: #fff;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .walmart-icon {
@@ -491,10 +455,10 @@ a {
   position: sticky;
   bottom: 0;
   z-index: 30;
-  padding: 10px 12px;
+  padding: 0 14px 24px;
   background: rgba(255, 255, 255, 0.94);
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -8px 20px rgba(31, 41, 51, 0.12);
+  border-top: 0;
+  box-shadow: none;
   backdrop-filter: blur(10px);
 }
 
@@ -545,14 +509,14 @@ a {
   border-radius: 999px;
   color: #fff;
   background: var(--blue-dark);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .logo {
   justify-self: center;
   color: #fff;
   font-size: 21px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .logo b {
@@ -606,7 +570,7 @@ main {
 
 .view-all {
   color: #0053b8;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .product-info,
@@ -644,7 +608,7 @@ h1 {
 .stars {
   color: #f2a900;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -692,7 +656,7 @@ h2 {
 .gaming-alternatives h2 {
   color: #000;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 ul {
@@ -728,7 +692,7 @@ dt {
 
 dd {
   margin: 3px 0 0;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .key-features ul,
@@ -744,7 +708,7 @@ dd {
 }
 
 .key-features strong {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .specs dl div {
@@ -760,7 +724,7 @@ dd {
 .specs dt {
   color: #2a2f37;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .specs dd {
@@ -798,7 +762,7 @@ dd {
   border-radius: 999px;
   color: #09214a;
   background: var(--yellow);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .fulfillment-options {
@@ -870,7 +834,7 @@ dd {
 .review-rating span {
   color: #f2a900;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .review-rating b {
@@ -962,6 +926,9 @@ body {
 
 .gpt-topbar,
 .pdp-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   min-height: 64px;
   padding: 0 16px;
   border-bottom: 1px solid transparent;
@@ -975,7 +942,28 @@ body {
   letter-spacing: 0;
 }
 
-.gpt-actions button,
+.gpt-topbar {
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  gap: 8px;
+}
+
+.gpt-kebab {
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--oai-text-primary);
+  background:
+    radial-gradient(circle, currentColor 0 2px, transparent 3px) 10px 50% / 8px 8px no-repeat,
+    radial-gradient(circle, currentColor 0 2px, transparent 3px) 16px 50% / 8px 8px no-repeat,
+    radial-gradient(circle, currentColor 0 2px, transparent 3px) 22px 50% / 8px 8px no-repeat;
+}
+
+.gpt-kebab:hover {
+  background-color: var(--oai-bg-tertiary);
+}
+
 .pdp-topbar button,
 .link-button,
 .gpt-composer button {
@@ -995,10 +983,94 @@ body {
 
 .user-message {
   width: 70%;
+  margin-bottom: 8px;
   padding: 16px 20px;
   color: var(--oai-text-primary);
   background: var(--oai-bg-tertiary);
   border-radius: 24px;
+}
+
+.assistant-message {
+  display: block;
+  margin-top: 18px;
+}
+
+.assistant-actions {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+  margin: 0 10px 18px 0;
+}
+
+.assistant-actions button {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  color: var(--oai-text-secondary);
+  background: transparent;
+}
+
+.copy-response::before,
+.copy-response::after {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 5px;
+  content: "";
+}
+
+.copy-response::before {
+  top: 8px;
+  left: 6px;
+  background: var(--oai-bg-primary);
+}
+
+.copy-response::after {
+  top: 3px;
+  left: 11px;
+}
+
+.edit-response::before {
+  position: absolute;
+  top: 5px;
+  left: 12px;
+  width: 8px;
+  height: 20px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  content: "";
+  transform: rotate(42deg);
+}
+
+.edit-response::after {
+  position: absolute;
+  right: 3px;
+  bottom: 4px;
+  width: 8px;
+  height: 2px;
+  border-radius: 2px;
+  content: "";
+  background: currentColor;
+  transform: rotate(-45deg);
+}
+
+.assistant-copy p {
+  margin: 0 0 14px;
+}
+
+.assistant-copy ul {
+  margin: 0 0 20px;
+  padding-left: 26px;
+}
+
+.assistant-copy li {
+  margin: 8px 0;
+}
+
+.assistant-copy strong {
+  font-weight: 500;
 }
 
 .source-chip {
@@ -1015,32 +1087,76 @@ body {
 }
 
 .recommendation-title {
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.award-icon {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(180deg, #ffcf4d, #c78911);
+  display: block;
+  margin: 0 0 24px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .chat-product-card {
-  padding-bottom: 24px;
+  overflow: visible;
+  padding-bottom: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-.chat-product-card img,
+.product-image-wrap,
 .gpt-hero {
   border-radius: 24px;
   background: var(--oai-bg-tertiary);
 }
 
+.product-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1.48;
+  border-radius: 24px;
+}
+
+.chat-product-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 24px;
+  object-fit: cover;
+  background: transparent;
+}
+
+.chat-product-card-body {
+  padding: 22px 0 0;
+}
+
 .chat-product-card h3 {
+  margin: 0 0 12px;
   color: var(--oai-text-primary);
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.chat-product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8px;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.chat-product-meta span {
+  white-space: nowrap;
+}
+
+.chat-product-meta span:not(:last-child)::after {
+  margin-left: 8px;
+  color: var(--oai-text-secondary);
+  content: "•";
 }
 
 .gpt-product-heading h1 {
@@ -1057,9 +1173,77 @@ body {
   color: var(--oai-text-primary);
 }
 
+.chat-product-card p {
+  margin: 0 0 22px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
 .chat-product-card h4 {
   font-size: 16px;
   font-weight: 600;
+}
+
+.secondary-recommendation {
+  margin-top: 32px;
+}
+
+.secondary-recommendation h2 {
+  margin: 0 0 18px;
+  color: var(--oai-text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.secondary-recommendation p {
+  margin: 0 0 24px;
+  color: var(--oai-text-primary);
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+.mini-product {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 26px;
+}
+
+.mini-product img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--oai-line);
+  border-radius: 14px;
+  object-fit: cover;
+  background: var(--oai-bg-tertiary);
+}
+
+.mini-product-title {
+  margin-bottom: 8px !important;
+}
+
+.mini-product-title a {
+  color: var(--oai-text-primary);
+  border-bottom: 1px dotted currentColor;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mini-product-title span {
+  white-space: nowrap;
+}
+
+.mini-product-title span::before {
+  margin: 0 6px;
+  color: var(--oai-text-secondary);
+  content: "•";
+}
+
+.mini-product p:last-child {
+  margin-bottom: 0;
 }
 
 .gpt-knowledge h2 {
@@ -1067,13 +1251,17 @@ body {
   font-weight: 600;
 }
 
+.gpt-composer-shell {
+  padding: 0 16px 24px;
+}
+
 .gpt-composer {
-  grid-template-columns: 40px 1fr;
-  margin: 0 16px 10px;
+  grid-template-columns: 46px minmax(0, 1fr) 46px;
+  min-height: 58px;
   padding: 8px;
   border: 1px solid var(--oai-line);
-  border-radius: 32px;
-  box-shadow: 0 16px 48px rgba(13, 13, 13, 0.14);
+  border-radius: 999px;
+  box-shadow: 0 14px 36px rgba(13, 13, 13, 0.12);
 }
 
 .gpt-composer input {
@@ -1085,13 +1273,14 @@ body {
   color: var(--oai-text-tertiary);
 }
 
-.voice-button {
-  background: var(--oai-text-primary) !important;
-}
+@media (max-width: 380px) {
+  .gpt-composer-shell {
+    padding-inline: 10px;
+  }
 
-#chatScreen .composer-mic,
-#chatScreen .voice-button {
-  display: none !important;
+  .gpt-composer {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+  }
 }
 
 .gpt-pdp-body {
@@ -1105,6 +1294,11 @@ body {
 .gpt-hero {
   overflow: hidden;
   padding-top: 8px;
+  background: transparent;
+}
+
+.gpt-hero img {
+  background: transparent;
 }
 
 .carousel-arrow {
@@ -1125,13 +1319,31 @@ body {
 
 .vendor-row h2 {
   color: var(--oai-text-primary);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
 }
 
 .vendor-row p,
 .vendor-row a {
   color: var(--oai-text-secondary);
+}
+
+.vendor-row .stock-status {
+  color: #137333;
+}
+
+.vendor-row strong {
+  font-size: 15px;
+}
+
+.walmart-icon {
+  background: transparent;
+  border: 0;
+}
+
+.walmart-icon img {
+  width: 18px;
+  height: 18px;
 }
 
 .vendor-row button {
@@ -1146,8 +1358,21 @@ body {
 
 .gpt-knowledge p {
   color: var(--oai-text-primary);
-  font-size: 19px;
+  font-size: 16px;
   line-height: 1.58;
+}
+
+.gpt-product-heading h1 {
+  font-size: 20px;
+}
+
+.gpt-product-heading p {
+  font-size: 17px;
+}
+
+.gpt-knowledge h2 {
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .follow-up {
@@ -1161,6 +1386,9 @@ body {
 }
 
 .mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
   color: var(--oai-text-primary);
   background: var(--oai-bg-primary);
   border-bottom: 1px solid var(--oai-line-soft);
@@ -1456,20 +1684,9 @@ h2 {
 }
 
 .chat-overlay {
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 -16px 48px rgba(13, 13, 13, 0.1);
-}
-
-.chat-form {
-  gap: 10px;
-}
-
-.chat-form input {
-  min-height: 48px;
-  border-color: var(--oai-line);
-  color: var(--oai-text-primary);
-  background: var(--oai-bg-primary);
+  padding: 0 16px 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff 20%);
+  box-shadow: none;
 }
 
 .chat-form input::placeholder {
@@ -1482,20 +1699,12 @@ h2 {
 }
 
 .card.is-contextual .section-title h2::after {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  color: var(--walmart-blue-deep);
-  background: #eef7ff;
-  content: attr(data-context-tag);
-  font-size: 11px;
-  font-weight: 600;
-  vertical-align: middle;
+  display: none;
+  content: none;
 }
 
 .card.is-contextual .section-title h2:not([data-context-tag])::after {
-  content: "AI";
+  content: none;
 }
 
 .gaming-review-content {
@@ -1695,6 +1904,10 @@ h2 {
   border-bottom: 1px solid var(--oai-line-soft);
 }
 
+.walmart-screen.is-generative.is-product-expanded .compact-product-summary {
+  display: none;
+}
+
 .walmart-screen.is-generative:not(.is-product-expanded) .product-media,
 .walmart-screen.is-generative:not(.is-product-expanded) .product-info,
 .walmart-screen.is-generative:not(.is-product-expanded) .purchase-panel,
@@ -1759,20 +1972,42 @@ h2 {
   font-weight: 700;
 }
 
-.compact-product-toggle {
+.compact-product-cta {
   min-height: 32px;
   padding: 0 12px;
-  border: 1px solid var(--oai-line);
+  border: 1px solid var(--walmart-blue);
   border-radius: 999px;
-  background: var(--oai-bg-primary);
-  color: var(--oai-text-primary);
+  background: var(--walmart-blue);
+  color: #fff;
   font: inherit;
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
 }
 
-.compact-product-toggle:focus-visible {
+.compact-product-details-link {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  color: var(--walmart-blue-deep);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.compact-product-details-link span {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.compact-product-cta:focus-visible,
+.compact-product-details-link:focus-visible {
   outline: 2px solid var(--walmart-blue);
   outline-offset: 2px;
 }
@@ -1917,14 +2152,21 @@ h2 {
   line-height: 1.25;
 }
 
-.walmart-screen.is-generative.scenario-valueAssessment .compact-product-toggle {
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-cta {
   min-width: 92px;
   min-height: 46px;
   padding: 0 18px;
-  border-color: var(--oai-line);
-  color: var(--oai-text-primary);
+  border-color: var(--walmart-blue);
+  color: #fff;
+  background: var(--walmart-blue);
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 700;
+}
+
+.walmart-screen.is-generative.scenario-valueAssessment .compact-product-details-link {
+  margin-top: 8px;
+  color: var(--walmart-blue-deep);
+  font-size: 14px;
 }
 
 .gaming-verdict {
@@ -2018,7 +2260,7 @@ h2 {
   margin-bottom: 16px;
   color: #07111f;
   font-size: 20px;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.02;
 }
@@ -2410,19 +2652,14 @@ h2 {
   min-width: 230px;
   color: #07111f;
   font-size: 20px;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.05;
 }
 
 .walmart-screen.is-generative.scenario-valueAssessment .reviews.card.is-contextual .section-title h2::after {
-  margin-left: 10px;
-  padding: 6px 10px;
-  border: 1px solid rgba(0, 83, 226, 0.1);
-  color: #0a3f8f;
-  background: #eef7ff;
-  font-size: 13px;
-  font-weight: 500;
+  display: none;
+  content: none;
 }
 
 .walmart-screen.is-generative.scenario-valueAssessment .reviews .review-rating {
@@ -2591,13 +2828,16 @@ h2 {
   place-items: center;
   aspect-ratio: 1 / 0.82;
   overflow: hidden;
+  padding: 20px 22px;
   border-bottom: 1px solid var(--oai-line-soft);
   background: #fff;
 }
 
 .gaming-product-image-well img {
-  width: 92%;
-  height: 92%;
+  width: 100%;
+  height: 100%;
+  max-width: 78%;
+  max-height: 78%;
   object-fit: contain;
 }
 
