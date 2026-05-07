@@ -1044,67 +1044,6 @@ body {
   margin-top: 18px;
 }
 
-.assistant-actions {
-  display: flex;
-  gap: 24px;
-  justify-content: flex-end;
-  margin: 0 10px 18px 0;
-}
-
-.assistant-actions button {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  border: 0;
-  color: var(--oai-text-secondary);
-  background: transparent;
-}
-
-.copy-response::before,
-.copy-response::after {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 2px solid currentColor;
-  border-radius: 5px;
-  content: "";
-}
-
-.copy-response::before {
-  top: 8px;
-  left: 6px;
-  background: var(--oai-bg-primary);
-}
-
-.copy-response::after {
-  top: 3px;
-  left: 11px;
-}
-
-.edit-response::before {
-  position: absolute;
-  top: 5px;
-  left: 12px;
-  width: 8px;
-  height: 20px;
-  border: 2px solid currentColor;
-  border-radius: 999px;
-  content: "";
-  transform: rotate(42deg);
-}
-
-.edit-response::after {
-  position: absolute;
-  right: 3px;
-  bottom: 4px;
-  width: 8px;
-  height: 2px;
-  border-radius: 2px;
-  content: "";
-  background: currentColor;
-  transform: rotate(-45deg);
-}
-
 .assistant-copy p {
   margin: 0 0 14px;
 }
@@ -1186,6 +1125,13 @@ body {
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.25;
+}
+
+.chat-product-card h3 a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
 }
 
 .chat-product-meta {

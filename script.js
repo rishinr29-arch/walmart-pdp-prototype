@@ -1084,7 +1084,9 @@ if (gamingCompareButton) {
 }
 
 document.querySelectorAll("[data-screen]").forEach((trigger) => {
-  trigger.addEventListener("click", () => {
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     showScreen(trigger.dataset.screen);
   });
   trigger.addEventListener("keydown", (event) => {
